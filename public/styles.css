@@ -237,3 +237,15 @@
 @media(max-width:960px){.dresscode-grid{gap:15px}.dresscode-card-inner{padding:22px 13px 27px}.dresscode-illustration{height:235px}.dresscode-card p{font-size:17px}}
 @media(max-width:720px){.dresscode-section{padding-top:70px;padding-bottom:76px}.dresscode-grid{grid-template-columns:1fr;max-width:510px;gap:19px}.dresscode-card-inner{padding:20px 14px 27px}.dresscode-illustration{height:260px}.dresscode-card h3{font-size:27px}.dresscode-card p{min-height:0;font-size:18px}.dresscode-footnote{font-size:16px}}
 @media(max-width:380px){.dresscode-illustration{height:212px}.dresscode-card{padding:8px}.dresscode-card-inner{padding:15px 9px 24px}.dresscode-card p{font-size:16px}}
+
+/* V5.20 - Nossa história: leitura mais confortável */
+.history-content p:not(.eyebrow):not(.history-note){line-height:1.8;margin:0 0 20px}
+.history-content p:not(.eyebrow):not(.history-note):first-of-type{font-size:1.06em}
+@media(max-width:760px){
+  .history-grid .history-content{text-align:left}
+  .history-content p:not(.eyebrow){margin-left:0;margin-right:0;font-size:16.5px;line-height:1.78}
+  .history-content .ornament{text-align:center}
+  .history-content h2{text-align:center}
+  .history-content .eyebrow{text-align:center}
+  .history-content .history-note{text-align:center;font-size:27px;margin-top:10px}
+}

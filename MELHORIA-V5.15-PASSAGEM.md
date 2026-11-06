@@ -15,3 +15,6 @@ Sem migração de banco. Para ativar: publique `public/`.
 - Em `convite-interativo.html?demo=1`, o botão "Confirmar presença" agora abre `convite-demo.html?convite=demonstracao#confirmacao`, com a seleção de convidados e quantidades. Antes, abria uma simulação simplificada.
 - Com o link real do convite (token), o botão já abria `index.html?convite=TOKEN#confirmacao`. Esse comportamento não mudou.
 - Os três botões do convite levam às seções do site: "Confirmar presença" → `#confirmacao`, "Como chegar" → `#celebracao` (onde ficam endereço e mapa), "Lista de presentes" → `#presentes`. Com o link real do convite, o token é mantido nos três.
+
+## Atualização V5.19 · História do casal
+- A seção "Nossa história" (`public/index.html`) deixou de ter texto de exemplo e passou a ter a história do casal, em parágrafos.
