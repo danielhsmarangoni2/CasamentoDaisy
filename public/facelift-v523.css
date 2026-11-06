@@ -1,0 +1,68 @@
+/* V5.23 · Facelift: mais leve, moderno e romântico. Sobrescreve styles.css sem alterar conteúdo. */
+:root{
+  --rose-soft:#fdf1f5;
+  --blush:#f8dfe9;
+  --ink:#4a2a3b;
+  --wine:#86144f;
+  --magenta:#b8236f;
+  --hairline:rgba(134,20,79,.16);
+  --radius-pill:999px;
+  --radius-card:22px;
+  --shadow-soft:0 18px 40px -22px rgba(134,20,79,.28);
+}
+body{background:linear-gradient(180deg,#fffafc 0%,#fff6f9 45%,#fffafc 100%);color:var(--ink);font-size:16px;line-height:1.75}
+h1,h2,h3{letter-spacing:-.01em}
+
+/* Faixa superior mais discreta */
+.announce{height:30px;background:var(--wine);letter-spacing:2.4px;font-size:9px;font-weight:600}
+
+/* Cabeçalho e monograma (igual ao convite) */
+.site-header{background:rgba(255,250,252,.9);border-bottom:1px solid var(--hairline)}
+.nav-wrap{height:76px}
+.brand{display:inline-flex;align-items:center;gap:0;font:inherit;color:var(--wine)}
+.brand .brand-amp,.brand .brand-flower{display:none}
+.brand-img{height:80px;width:auto;max-width:none;transition:transform .4s ease}
+.brand:hover .brand-img{transform:scale(1.03)}
+.site-nav a{font-size:11px;letter-spacing:1.6px;font-weight:600;color:var(--ink)}
+.site-nav a:hover{color:var(--magenta)}
+.site-nav .nav-highlight{background:var(--wine);color:#fff;border-radius:var(--radius-pill);padding:11px 20px}
+.site-nav .nav-highlight:hover{background:var(--magenta);color:#fff}
+
+/* Hero: mais ar, títulos com itálico romântico */
+.hero{background:radial-gradient(120% 90% at 85% 10%,#fde7ef 0%,#fff8fa 55%,#fffafc 100%)}
+.hero-pattern{opacity:.25}
+.hero .eyebrow{letter-spacing:3px;font-size:10px;color:var(--magenta)}
+.hero h1{font-weight:400;letter-spacing:-.02em;color:var(--wine)}
+.hero h1 em{font-family:'Great Vibes',cursive;color:var(--magenta);font-size:clamp(60px,5.6vw,92px)}
+.hero-lead{font-style:italic;font-size:26px;color:var(--wine)}
+.hero-intro{color:#7a5f6e;font-size:16px;line-height:1.8}
+
+/* Botões em pílula, como o convite */
+.btn{border-radius:var(--radius-pill);min-height:50px;padding:14px 26px;letter-spacing:1.6px;font-size:11px}
+.btn-dark{background:var(--wine);box-shadow:0 12px 24px -14px rgba(134,20,79,.6)}
+.btn-dark:hover:not(:disabled){background:var(--magenta)}
+.btn-ghost{border-color:rgba(134,20,79,.35);color:var(--wine);background:rgba(255,255,255,.6)}
+.btn-ghost:hover:not(:disabled){background:#fff;border-color:var(--wine)}
+
+/* Seções: títulos com acento itálico e respiro maior */
+.section{padding:120px 0}
+.section-heading h2,.history-content h2,.presents-grid h2,.rsvp-box h2{color:var(--wine);font-weight:400}
+.section-heading h2 i,.history-content h2 i,.presents-grid h2 i,.rsvp-box h2 i{color:var(--magenta);font-family:'Playfair Display',Georgia,serif}
+.history-content p:not(.eyebrow),.section-heading>p:last-child,.presents-grid p:not(.eyebrow),.rsvp-box>p:not(.eyebrow){color:#7a5f6e}
+.ornament{color:#d59ab8;letter-spacing:9px}
+
+/* Cartões mais suaves */
+.detail-card{border-radius:var(--radius-card);border:1px solid var(--hairline);background:#fff;box-shadow:var(--shadow-soft)}
+.detail-card.featured{background:linear-gradient(180deg,#fff,var(--rose-soft));border-color:rgba(184,35,111,.22)}
+.detail-icon{border-color:rgba(184,35,111,.45)}
+
+/* Faixa de frase e rodapé mais leves */
+.intro-banner{background:var(--wine)}
+.footer{background:#fff;border-top:1px solid var(--hairline)}
+
+@media(max-width:760px){
+  .brand-img{height:64px}
+  .hero h1 em{font-size:clamp(54px,15vw,76px)}
+  .section{padding:84px 0}
+  .hero-lead{font-size:22px}
+}
