@@ -1,0 +1,26 @@
+# PREENCHA NO PAINEL NETLIFY > ENVIRONMENT VARIABLES. NÃO envie este arquivo preenchido.
+# NÃO coloque tokens ou senhas no config.js, HTML, GitHub nem aqui dentro do ZIP compartilhado.
+SUPABASE_URL=https://SEU-PROJETO.supabase.co
+SUPABASE_SERVICE_ROLE_KEY=COLE_NO_PAINEL_NETLIFY
+MP_ACCESS_TOKEN=COLE_NO_PAINEL_NETLIFY
+MP_WEBHOOK_SECRET=COLE_NO_PAINEL_NETLIFY
+META_WA_ACCESS_TOKEN=COLE_NO_PAINEL_NETLIFY
+META_WA_PHONE_NUMBER_ID=ID_DO_NUMERO_DE_ENVIO_DA_CLOUD_API
+META_WA_DESTINO=5511999999999
+META_WA_TEMPLATE=alerta_site_casamento
+META_WA_LANG=pt_BR
+META_GRAPH_VERSION=v24.0
+PUBLIC_SITE_URL=https://SEU-SITE.netlify.app
+# Opcional, proteção contra bots para RSVP e pagamentos:
+# TURNSTILE_SECRET_KEY=COLE_NO_PAINEL_NETLIFY
+# TURNSTILE_REQUIRED=true  -> sem a chave secreta, bloqueia pagamentos, RSVP e fotos (em vez de liberar sem verificação).
+
+# V3 - Backup externo criptografado (Cloudflare R2, bucket PRIVADO)
+# Exige criação de bucket e API Token R2 S3 com permissão somente neste bucket.
+R2_ACCOUNT_ID=ID_DA_CONTA_COM_32_HEX
+R2_ACCESS_KEY_ID=CHAVE_ID_R2
+R2_SECRET_ACCESS_KEY=CHAVE_SECRETA_R2
+R2_BUCKET=nome-do-bucket-privado
+# Gere com: node -p "require('node:crypto').randomBytes(32).toString('base64')"
+# GUARDE FORA DO NETLIFY TAMBEM, sem esta chave os backups são irrecuperáveis!
+BACKUP_ENCRYPTION_KEY=BASE64_32_BYTES

@@ -1,0 +1,53 @@
+[build]
+  publish = "public"
+  functions = "netlify/functions"
+
+[functions."health-monitor"]
+  schedule = "*/15 * * * *"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    X-Frame-Options = "DENY"
+
+# 03:00 UTC = 00:00 em São Paulo, para backups lógicos criptografados.
+[functions."backup-daily"]
+  schedule = "0 3 * * *"
+
+# 1 vez por hora: copia até 6 fotos pendentes por execução para R2.
+[functions."backup-photos"]
+  schedule = "15 * * * *"
+
+# Páginas de demonstração/prévia: fora de buscadores (dados fictícios ou painel privado).
+[[headers]]
+  for = "/admin.html"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
+
+[[headers]]
+  for = "/admin-demo.html"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
+
+[[headers]]
+  for = "/convite-demo.html"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
+
+[[headers]]
+  for = "/PREVIA-ACESSO.html"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
+
+[[headers]]
+  for = "/PREVIA-CINEMATOGRAFICA-OFFLINE.html"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
+
+[[headers]]
+  for = "/PREVIA-ORQUIDEAS-OFFLINE.html"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
+

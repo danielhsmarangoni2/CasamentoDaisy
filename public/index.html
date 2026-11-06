@@ -1,0 +1,285 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="theme-color" content="#86144f" />
+  <meta name="description" content="O site de casamento de Daisy e Vinícius. Nossa história, informações da celebração, confirmação de presença e mural de fotos e recados." />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Daisy e Vinícius | Casamento" />
+  <meta property="og:description" content="Venha celebrar o amor conosco. Informações, presença e memórias em um só lugar." />
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Great+Vibes&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <script src="config.js" defer></script>
+  <script src="qr-local.js" defer></script>
+  <script src="app.js" defer></script>
+  <script src="anti-bot.js" defer></script>
+  <title>Daisy e Vinícius | Casamento</title>
+</head>
+<body>
+  <a class="skip-link" href="#inicio">Pular para o conteúdo</a>
+  <div class="announce">NOSSA HISTÓRIA MAIS BONITA ESTÁ COMEÇANDO <span>✧</span></div>
+  <header class="site-header" id="topo">
+    <div class="container nav-wrap">
+      <a class="brand" href="#inicio" aria-label="Voltar ao início">D<span class="brand-amp">&</span>V<span class="brand-flower">✳</span></a>
+      <button type="button" class="menu-toggle" id="menu-toggle" aria-expanded="false" aria-controls="nav-list" aria-label="Abrir menu"><span></span><span></span><span></span></button>
+      <nav id="nav-list" class="site-nav" aria-label="Navegação principal">
+        <a href="#historia">Nossa história</a><a href="#celebracao">O grande dia</a><a href="#trajes">Trajes</a><a href="#mural">Mural</a><a href="#presentes">Presentes</a><a href="#confirmacao" class="nav-highlight">Confirmar presença</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="inicio">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-pattern" aria-hidden="true"></div>
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow"><span class="small-line"></span>O COMEÇO DO NOSSO PARA SEMPRE</p>
+          <h1 id="hero-title"><span id="nome-primeiro">Daisy</span><em>e</em><span id="nome-segundo">Vinícius</span></h1>
+          <p class="hero-lead">Há amores que fazem a vida florescer.</p>
+          <p class="hero-intro">E o nosso maior presente é poder celebrar esse dia pertinho de quem amamos.</p>
+          <div class="hero-buttons"><a href="#confirmacao" class="btn btn-dark">Confirmar presença <span aria-hidden="true">↗</span></a><a href="#mural" class="btn btn-ghost">Deixe uma lembrança <span aria-hidden="true">↗</span></a></div>
+          <a class="calendar-link" href="casamento.ics" download="casamento-daisy-e-vinicius.ics">♡ Adicionar ao calendário</a><div class="hero-date"><span class="date-rule"></span><span id="hero-data">23 DE MAIO DE 2027</span><span class="date-rule"></span></div><p class="hero-times"><span>Entrada dos convidados <strong id="hero-entry">10h</strong></span><span class="hero-times-separator" aria-hidden="true">✦</span><span>Cerimônia <strong id="hero-ceremony">11h</strong></span></p>
+        </div>
+        <div class="hero-art" aria-label="Ilustração botânica e monograma dos noivos">
+          <div class="art-border"><img src="assets/botanico.svg" alt="Ilustração delicada de flores e folhagens em aquarela" /></div>
+          <div class="art-seal"><span class="art-seal-small">THE WEDDING OF</span><strong id="monograma">D <i>&</i> V</strong><span class="art-seal-small">FOREVER & ALWAYS</span></div>
+          <span class="hero-art-caption">um amor para a vida inteira</span>
+        </div>
+      </div>
+      <div class="scroll-prompt">DESLIZE PARA CONHECER <span>↓</span></div>
+    </section>
+
+    <section class="intro-banner" aria-label="Mensagem especial"><div class="container intro-banner-inner"><span>✦</span><p>Dois corações, uma história, infinitas memórias.</p><span>✦</span></div></section>
+
+    <section id="historia" class="section history-section">
+      <div class="container history-grid">
+        <div class="history-graphic"><div class="history-frame"><img src="assets/floral-canto.svg" alt="Arranjo ilustrado de flores delicadas" /></div><span class="history-stamp">love grows here<br /><b>✳</b></span></div>
+        <div class="history-content"><p class="eyebrow">CAPÍTULO 01 · A NOSSA HISTÓRIA</p><h2>De um encontro,<br /><i>nasceu o para sempre.</i></h2><span class="ornament">✳ ───── ✳</span><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus imperdiet, ligula at bibendum posuere, urna nisl tincidunt metus, sed sagittis mauris nisi vitae elit.</p><p>Praesent a justo ut libero tempor commodo. Aliquam vel urna et magna ullamcorper tincidunt. Suspendisse potenti, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p><p class="history-note">Nossa história continua… e você faz parte dela. ♡</p></div>
+      </div>
+    </section>
+
+    <section class="date-section" aria-labelledby="countdown-title"><div class="container date-inner"><p class="eyebrow">CONTANDO OS DIAS PARA O SIM</p><h2 id="countdown-title">O nosso grande dia</h2><p id="countdown-caption">Contagem regressiva para a cerimônia às 11h. Chegada dos convidados às 10h.</p><div class="countdown" id="countdown" aria-live="off"><div><strong id="cd-days">--</strong><span>dias</span></div><i>:</i><div><strong id="cd-hours">--</strong><span>horas</span></div><i>:</i><div><strong id="cd-minutes">--</strong><span>minutos</span></div><i>:</i><div><strong id="cd-seconds">--</strong><span>segundos</span></div></div></div></section>
+
+    <section id="celebracao" class="section celebration-section"><div class="container"><div class="section-heading"><p class="eyebrow">CAPÍTULO 02 · A CELEBRAÇÃO</p><h2>Onde tudo vai <i>acontecer</i></h2><p>Preparamos cada detalhe com carinho para viver esse momento com vocês.</p></div><div class="details-grid">
+      <article class="detail-card"><div class="detail-icon" aria-hidden="true">✿</div><span class="detail-overline">QUANDO</span><h3 id="detail-date">23 de maio de 2027</h3><div class="event-schedule" id="detail-time" aria-label="Horários do casamento"><div><strong id="detail-entry">10h</strong><span>Entrada dos convidados</span></div><div><strong id="detail-ceremony">11h</strong><span>Início da cerimônia</span></div></div></article>
+      <article class="detail-card featured"><div class="detail-icon" aria-hidden="true">⌂</div><span class="detail-overline">ONDE</span><h3 id="detail-location">Mansão Victória</h3><p id="detail-address">Rua Orfanato, 440 - Vila Prudente, São Paulo - SP, 03131-010</p><a id="map-link" class="detail-link" href="https://www.google.com/maps/dir/?api=1&destination=Mans%C3%A3o%20Vict%C3%B3ria%2C%20Rua%20Orfanato%2C%20440%2C%20Vila%20Prudente%2C%20S%C3%A3o%20Paulo%2C%20SP%2C%2003131-010" target="_blank" rel="noopener noreferrer">Como chegar pelo Google Maps ↗</a></article>
+      <article class="detail-card"><div class="detail-icon" aria-hidden="true">♡</div><span class="detail-overline">O QUE ESPERAR</span><h3>Um dia inesquecível</h3><p>Muito amor, abraços apertados e memórias que vão durar para sempre.</p></article>
+    </div></div></section>
+
+    <section id="trajes" class="section dresscode-section" aria-labelledby="dresscode-title">
+      <div class="container">
+        <div class="section-heading dresscode-heading">
+          <p class="eyebrow">UM DETALHE COM CARINHO</p>
+          <h2 id="dresscode-title">O que <i>vestir?</i></h2>
+          <p>Preparamos algumas inspirações para você celebrar esse dia com a gente.</p>
+        </div>
+        <div class="dresscode-grid">
+          <article class="dresscode-card" aria-labelledby="dresscode-women-title">
+            <div class="dresscode-card-inner">
+              <div class="dresscode-illustration">
+                <img src="assets/traje-convidadas.webp" width="622" height="467" loading="lazy" decoding="async" alt="Ilustração de quatro convidadas usando vestidos longos em tons neutro, verde e azul." />
+              </div>
+              <span class="dresscode-rule" aria-hidden="true">✧</span>
+              <h3 id="dresscode-women-title">Convidadas</h3>
+              <p>Sugerimos <strong>vestido longo</strong>. Com carinho, pedimos que evitem os tons <strong>rosa e fúcsia</strong>.</p>
+            </div>
+          </article>
+          <article class="dresscode-card" aria-labelledby="dresscode-men-title">
+            <div class="dresscode-card-inner">
+              <div class="dresscode-illustration">
+                <img src="assets/traje-convidados.webp" width="799" height="389" loading="lazy" decoding="async" alt="Ilustração de cinco convidados usando ternos e blazers sociais em diferentes tons." />
+              </div>
+              <span class="dresscode-rule" aria-hidden="true">✧</span>
+              <h3 id="dresscode-men-title">Convidados</h3>
+              <p>Sugerimos <strong>traje social ou esporte fino</strong>.</p>
+            </div>
+          </article>
+        </div>
+        <p class="dresscode-footnote">O mais importante é ter você conosco nesse dia especial. ♡</p>
+      </div>
+    </section>
+
+    <section id="mural" class="section mural-section"><div class="container"><div class="section-heading"><p class="eyebrow">CAPÍTULO 03 · MEMÓRIAS COMPARTILHADAS</p><h2>Nosso mural <i>de carinho</i></h2><p>Poste uma foto ou deixe uma mensagem para os noivos. Seus registros farão parte da nossa história!</p></div>
+      <div class="mural-layout"><div class="upload-panel"><div class="upload-heading"><span class="circle-mark">♡</span><div><h3>Deixe seu carinho</h3><p>Um recado, uma foto ou os dois.</p></div></div>
+        <form id="mural-form" novalidate><label for="guest-name">Seu nome <span>*</span></label><input id="guest-name" type="text" name="nome" maxlength="70" minlength="2" autocomplete="name" placeholder="Como podemos chamar você?" required />
+          <label for="guest-message">Sua mensagem <small>(opcional se enviar foto)</small></label><textarea id="guest-message" name="mensagem" rows="4" maxlength="700" placeholder="Escreva algo especial para Daisy e Vinícius..."></textarea><div class="letter-count"><span id="letter-count">0</span>/700</div>
+          <label for="guest-photo">Sua foto <small>(opcional)</small></label><label class="file-input" for="guest-photo"><span class="file-icon" aria-hidden="true">↑</span><span id="file-label"><b>Clique para escolher uma foto</b><small>JPG, PNG ou imagem do celular • até 15 MB antes da otimização</small></span></label><input id="guest-photo" class="visually-hidden" name="foto" type="file" accept="image/*" />
+          <div id="photo-preview" class="photo-preview hidden"><img id="preview-image" alt="Prévia da foto selecionada" /><button type="button" id="remove-photo" aria-label="Remover foto">×</button></div>
+          <label class="checkline"><input type="checkbox" id="guest-consent" required /><span>Autorizo a publicação da minha mensagem e/ou foto neste site, após aprovação dos noivos.</span></label>
+          <div class="honeypot" aria-hidden="true"><label for="guest-site">Não preencha este campo</label><input id="guest-site" autocomplete="off" tabindex="-1" /></div>
+          <div id="mural-antibot" class="antibot-slot" aria-label="Verificação anti-robô para enviar fotos"></div><button class="btn btn-dark btn-full" id="submit-post" type="submit">Enviar minha lembrança <span>↗</span></button><p class="form-note" id="mural-info">Os posts passam por aprovação antes de aparecer no site.</p>
+          <p id="mural-form-status" class="form-status" role="status" aria-live="polite"></p></form>
+      </div>
+      <div class="wall-panel"><div class="wall-top"><h3>Com amor, de vocês</h3><span class="wall-count" id="wall-count">0 lembranças</span></div><p class="mural-action-hint">Fotos e mensagens aparecem aqui depois da aprovação dos noivos. <a href="cartao-mural.html" target="_blank" rel="noopener">Ver QR Code do mural ↗</a></p><div class="wall-filters" role="group" aria-label="Filtrar lembranças"><button type="button" class="filter active" data-filter="todos" aria-pressed="true">Todos</button><button type="button" class="filter" data-filter="fotos" aria-pressed="false">Fotos</button><button type="button" class="filter" data-filter="recados" aria-pressed="false">Recados</button></div><div id="wall-posts" class="wall-posts" aria-live="polite"><div class="empty-wall"><span class="empty-icon">✳</span><h4>As primeiras lembranças começam aqui.</h4><p>Quando o mural estiver conectado, as mensagens aprovadas aparecerão neste espaço.</p></div></div></div></div>
+    </div></section>
+
+    <section id="presentes" class="section presents-section" aria-labelledby="presents-title">
+      <div class="container">
+        <div class="contributions-heading">
+          <span class="monogram-mini" aria-hidden="true">D <i>&</i> V</span>
+          <p class="eyebrow">CAPÍTULO 04 · NOSSO CANTINHO DE CARINHO</p>
+          <h2 id="presents-title">Presentes <i>com amor</i></h2>
+          <p>A sua presença é o nosso maior presente. Mas, se desejar contribuir com nossos sonhos, escolha uma das opções abaixo ou ofereça o valor que estiver em seu coração.</p>
+          <span class="gift-flourish" aria-hidden="true">✦ ───── ♡ ───── ✦</span>
+        </div>
+        <div class="contribution-grid">
+        <article class="contribution-card">
+          <div class="contribution-art"><img src="assets/presente-150.svg" alt="Ilustração delicada de primeiros passos" loading="lazy" /></div>
+          <h3>Primeiros passos</h3>
+          <p class="contribution-value">R$ 150</p>
+          <p class="contribution-description">Um presente especial para o começo da nossa vida a dois.</p>
+          <button class="contribution-button" type="button" data-gift-amount="150" data-gift-title="Primeiros passos">Presentear com este valor</button>
+        </article>
+        <article class="contribution-card">
+          <div class="contribution-art"><img src="assets/presente-250.svg" alt="Ilustração delicada de nosso novo lar" loading="lazy" /></div>
+          <h3>Nosso novo lar</h3>
+          <p class="contribution-value">R$ 250</p>
+          <p class="contribution-description">Um carinho para nos ajudar a preparar nosso cantinho.</p>
+          <button class="contribution-button" type="button" data-gift-amount="250" data-gift-title="Nosso novo lar">Presentear com este valor</button>
+        </article>
+        <article class="contribution-card">
+          <div class="contribution-art"><img src="assets/presente-350.svg" alt="Ilustração delicada de lua de mel" loading="lazy" /></div>
+          <h3>Lua de mel</h3>
+          <p class="contribution-value">R$ 350</p>
+          <p class="contribution-description">Uma lembrança especial para celebrarmos esse novo começo.</p>
+          <button class="contribution-button" type="button" data-gift-amount="350" data-gift-title="Lua de mel">Presentear com este valor</button>
+        </article>
+        <article class="contribution-card">
+          <div class="contribution-art"><img src="assets/presente-500.svg" alt="Ilustração delicada de construindo nossa casa" loading="lazy" /></div>
+          <h3>Construindo nossa casa</h3>
+          <p class="contribution-value">R$ 500</p>
+          <p class="contribution-description">Um presente para a construção do nosso novo lar.</p>
+          <button class="contribution-button" type="button" data-gift-amount="500" data-gift-title="Construindo nossa casa">Presentear com este valor</button>
+        </article>
+        <article class="contribution-card">
+          <div class="contribution-art"><img src="assets/presente-750.svg" alt="Ilustração delicada de presente especial" loading="lazy" /></div>
+          <h3>Presente especial</h3>
+          <p class="contribution-value">R$ 750</p>
+          <p class="contribution-description">Um gesto generoso que guardaremos com gratidão.</p>
+          <button class="contribution-button" type="button" data-gift-amount="750" data-gift-title="Presente especial">Presentear com este valor</button>
+        </article>
+        <article class="contribution-card">
+          <div class="contribution-art"><img src="assets/presente-1000.svg" alt="Ilustração delicada de presente especial aos noivos" loading="lazy" /></div>
+          <h3>Presente especial aos noivos</h3>
+          <p class="contribution-value">R$ 1.000</p>
+          <p class="contribution-description">Um presente marcante para esse início tão importante.</p>
+          <button class="contribution-button" type="button" data-gift-amount="1000" data-gift-title="Presente especial aos noivos">Presentear com este valor</button>
+        </article>
+          <article class="contribution-card contribution-card-other">
+            <div class="contribution-art"><img src="assets/presente-outro.svg" alt="Envelope delicado com laço" loading="lazy" /></div>
+            <h3>Outro valor</h3>
+            <p class="contribution-value contribution-value-words">Com carinho</p>
+            <p class="contribution-description">Escolha livremente outro valor para presentear os noivos.</p>
+            <button class="contribution-button" type="button" data-gift-amount="outro" data-gift-title="Com carinho">Escolher outro valor</button>
+          </article>
+        </div>
+        <p class="contribution-fineprint">Contribuições voluntárias. Pix por chave cadastrada ou cartão no ambiente seguro do Mercado Pago, sujeito às taxas e condições informadas no checkout. Os noivos não recebem os dados do seu cartão.</p>
+      </div>
+    </section>
+
+    <section id="confirmacao" class="section rsvp-section" aria-labelledby="rsvp-heading">
+      <div class="container rsvp-box">
+        <img src="assets/ramo.svg" alt="" class="rsvp-branch left" />
+        <img src="assets/ramo.svg" alt="" class="rsvp-branch right" />
+        <span class="rsvp-monogram" aria-hidden="true">D <i>&</i> V</span>
+        <p class="eyebrow">VOCÊ FAZ PARTE DA NOSSA HISTÓRIA</p>
+        <h2 id="rsvp-heading">Confirmação de <i>presença</i></h2>
+        <p>Nosso grande dia ficará ainda mais especial com você! Conte para nós se poderá estar presente no dia <strong>23 de maio de 2027</strong>, na Mansão Victória.</p>
+        <div class="rsvp-event-line" aria-label="Informações do evento"><span>✦ 23 · 05 · 2027</span><span>✦ Mansão Victória</span></div>
+        <div id="invite-entry" class="invite-entry" role="status" aria-live="polite">
+          <strong>Seu convite personalizado</strong>
+          <p id="invite-entry-text">Para confirmar presença, abra o link individual enviado pelos noivos.</p>
+          <div class="invite-manual"><label for="invite-code">Código do convite</label><div><input id="invite-code" type="text" autocomplete="off" placeholder="Cole seu código aqui" maxlength="32"/><button id="invite-open" type="button" class="btn btn-dark">Abrir convite</button></div></div>
+        </div>
+        <form id="rsvp-form" class="rsvp-form" novalidate hidden>
+          <div class="rsvp-form-head"><span>RSVP</span><span>DAISY E VINÍCIUS</span></div>
+          <div class="rsvp-field"><label for="rsvp-name">Seu nome completo <span aria-hidden="true">*</span></label><input type="text" id="rsvp-name" name="nome" required maxlength="90" autocomplete="name" placeholder="Nome e sobrenome" /></div>
+          <fieldset class="rsvp-choices">
+            <legend>Você poderá comparecer? <span aria-hidden="true">*</span></legend>
+            <label class="rsvp-choice selected"><input type="radio" name="rsvp-resposta" value="sim" checked /><span class="rsvp-choice-icon" aria-hidden="true">♡</span><span><strong>Sim, estarei presente!</strong><small>Será uma alegria celebrar com vocês</small></span></label>
+            <label class="rsvp-choice"><input type="radio" name="rsvp-resposta" value="nao" /><span class="rsvp-choice-icon" aria-hidden="true">✉</span><span><strong>Não poderei comparecer</strong><small>Estarei com vocês em pensamento</small></span></label>
+          </fieldset>
+          <div id="rsvp-guests" class="rsvp-guests">
+            <p class="rsvp-form-subtitle">Quem vem com você?</p>
+            <p class="rsvp-field-caption">Informe as pessoas que estão incluídas no seu convite.</p>
+            <div id="invite-members" class="invite-members" aria-label="Pessoas incluídas no convite"></div>
+            <div class="rsvp-count-grid" id="rsvp-count-grid" hidden>
+              <div class="rsvp-field"><label for="rsvp-adults">Adultos (incluindo você)</label><select id="rsvp-adults" name="adultos"><option value="1">1 adulto</option><option value="2">2 adultos</option><option value="3">3 adultos</option><option value="4">4 adultos</option><option value="5">5 adultos</option><option value="6">6 adultos</option></select></div>
+              <div class="rsvp-field"><label for="rsvp-children">Crianças</label><select id="rsvp-children" name="criancas"><option value="0">Nenhuma</option><option value="1">1 criança</option><option value="2">2 crianças</option><option value="3">3 crianças</option><option value="4">4 crianças</option><option value="5">5 crianças</option><option value="6">6 crianças</option></select></div>
+            </div>
+            <div class="rsvp-field" id="rsvp-companions-field" hidden><label for="rsvp-others">Nome dos acompanhantes <span aria-hidden="true">*</span></label><textarea id="rsvp-others" name="acompanhantes" maxlength="450" rows="3" placeholder="Nome de cada acompanhante, incluindo as crianças"></textarea><small>Escreva os nomes, separados por vírgula.</small></div>
+          </div>
+          <div class="rsvp-field"><label for="rsvp-contact">Seu WhatsApp <small>(opcional)</small></label><input type="tel" id="rsvp-contact" name="contato" maxlength="20" inputmode="tel" autocomplete="tel" placeholder="(11) 99999-9999" /><small>Usaremos apenas se precisarmos falar sobre sua confirmação.</small></div>
+          <div class="rsvp-hp" aria-hidden="true"><label for="rsvp-company">Deixe este campo em branco</label><input id="rsvp-company" tabindex="-1" autocomplete="off" /></div>
+          <div id="rsvp-antibot" class="antibot-slot" aria-label="Verificação anti-robô"></div>
+          <button id="rsvp-submit" class="btn btn-dark btn-full rsvp-submit" type="submit">Enviar confirmação <span aria-hidden="true">↗</span></button>
+          <p id="rsvp-status" class="form-status rsvp-status" role="status" aria-live="polite"></p>
+          <p class="rsvp-privacy">♡ Seus dados serão usados somente para organizar a lista de convidados e não serão publicados no site.</p>
+        </form>
+      </div>
+    </section>
+  </main>
+  <footer class="footer"><div class="container"><a href="#inicio" class="footer-monogram">D <i>&</i> V</a><p>Feito com amor para celebrar o nosso para sempre.</p><p class="footer-small">Daisy e Vinícius · <span id="footer-date">23 de maio de 2027</span></p><a class="to-top" href="#inicio">Voltar ao topo ↑</a></div></footer>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <div class="mobile-fixed-actions" aria-label="Atalhos do casamento"><a href="#presentes">♡ Presentear</a><a href="#confirmacao">✓ Confirmar presença</a></div>
+  <dialog id="gift-dialog" class="gift-dialog" aria-labelledby="gift-dialog-title">
+    <div class="gift-dialog-frame">
+      <button type="button" id="close-gift" class="gift-dialog-close" aria-label="Fechar opções de presente">×</button>
+      <div class="gift-dialog-monogram" aria-hidden="true">D · V</div>
+      <p class="gift-dialog-overline">FORMA DE PRESENTE</p>
+      <h2 id="gift-dialog-title">Como deseja presentear?</h2>
+      <div class="gift-selected-box"><span>SEU PRESENTE</span><p id="gift-dialog-description" class="gift-dialog-description"></p></div>
+      <div id="gift-custom-area" class="gift-custom-area" hidden>
+        <label for="gift-custom-amount">Escolha o valor da contribuição</label>
+        <div class="gift-currency-field"><span>R$</span><input id="gift-custom-amount" type="text" inputmode="decimal" autocomplete="off" maxlength="12" placeholder="Ex.: 120,00" aria-describedby="gift-custom-hint" /></div>
+        <small id="gift-custom-hint">De R$ 5,00 a R$ 10.000,00.</small>
+      </div>
+      <div id="gift-card-identity" class="gift-name-area" hidden>
+        <div id="gift-card-name-fields">
+          <label for="gift-donor-name">Nome de quem está presenteando <span aria-hidden="true">*</span></label>
+          <input id="gift-donor-name" type="text" minlength="2" maxlength="80" autocomplete="name" placeholder="Nome e sobrenome" aria-describedby="gift-card-privacy" />
+          <small id="gift-card-privacy">Não precisa ser o nome do titular do cartão. Usaremos para identificar sua contribuição após a aprovação do pagamento.</small>
+        </div>
+        <p id="gift-manual-warning" class="gift-manual-warning" hidden>O link manual do Mercado Pago não vincula automaticamente seu nome à contribuição. Para identificar quem presenteou e avisar os noivos, é necessário ativar a integração automática.</p>
+        <button type="button" id="gift-card-confirm" class="gift-dialog-secondary">CONTINUAR PARA PAGAMENTO SEGURO</button>
+        <button type="button" id="gift-card-back" class="gift-pix-back-button">VOLTAR ÀS FORMAS DE PAGAMENTO</button>
+      </div>
+      <div id="gift-payment-selection">
+      <p class="gift-payment-question">Como prefere contribuir?</p>
+      <div class="gift-dialog-actions">
+        <button type="button" id="gift-pix" class="gift-dialog-primary" aria-controls="gift-pix-guide" aria-expanded="false">
+          <span class="payment-icon" aria-hidden="true">◇</span><span class="payment-label"><strong>Pagar via Pix</strong><small>QR Code e código copia e cola</small></span><span aria-hidden="true">↗</span>
+        </button>
+        <button type="button" id="gift-mercadopago" class="gift-dialog-secondary">
+          <span class="payment-icon" aria-hidden="true">▣</span><span class="payment-label"><strong>Pagar com cartão</strong><small>Ambiente seguro do Mercado Pago</small></span><span aria-hidden="true">↗</span>
+        </button>
+      </div>
+      </div><!-- fim gift-payment-selection -->
+      <div id="gift-pix-guide" class="gift-pix-guide" hidden>
+        <p class="gift-pix-overline">PRESENTE VIA PIX</p>
+        <h3 class="gift-pix-heading">Um carinho especial</h3>
+        <p id="gift-pix-instruction" class="gift-pix-intro"></p>
+        <div id="gift-pix-qr" class="gift-pix-qr" role="group" aria-label="QR Code do pagamento Pix"></div>
+        <p class="gift-pix-copy-label">CÓDIGO PIX COPIA E COLA</p>
+        <div class="gift-pix-code-box"><code id="gift-pix-code"></code></div>
+        <button type="button" id="gift-pix-copy" class="gift-pix-copy-button">COPIAR CÓDIGO PIX</button>
+        <button type="button" id="gift-pix-back" class="gift-pix-back-button">VOLTAR ÀS FORMAS DE PAGAMENTO</button>
+        <p class="gift-pix-thanks">Obrigado por fazer parte desse novo começo. Seu carinho torna nossa história ainda mais especial. ♡</p>
+        <p id="gift-pix-recipient" class="gift-pix-recipient"></p>
+        <p class="gift-pix-reminder">Antes de confirmar, confira o nome do recebedor e o valor no aplicativo do seu banco. <strong>Pix direto não envia aviso automático aos noivos.</strong> Para receber confirmação automática, escolha o checkout Mercado Pago, quando disponível.</p>
+      </div>
+      <div id="gift-antibot" class="antibot-slot" aria-label="Verificação anti-robô"></div>
+      <p id="gift-pix-message" class="gift-dialog-help" hidden></p>
+      <p id="gift-payment-status" class="gift-dialog-status" role="status" aria-live="polite"></p>
+      <div class="gift-redirect-tip"><span aria-hidden="true">♧</span><p><strong>Pagamento protegido.</strong> Ao escolher cartão, você sairá deste site e continuará no ambiente do Mercado Pago. O iPhone poderá perguntar se deseja abrir o aplicativo.</p></div>
+      <p class="gift-dialog-disclaimer">Confira o valor e o nome do recebedor antes de pagar. Nenhum dado do cartão é solicitado aqui; pagamento e aprovação são conferidos no Mercado Pago ou no banco.</p>
+    </div>
+  </dialog>
+  <dialog id="image-dialog" class="image-dialog"><button type="button" id="close-image" aria-label="Fechar foto">×</button><img id="dialog-image" alt="Foto compartilhada no casamento" /></dialog>
+<script>window.addEventListener("DOMContentLoaded",()=>{if(new URLSearchParams(location.search).has("pagamento")){const p=new URLSearchParams(location.search).get("pagamento");const message=p==="retorno"?"Obrigado pelo carinho! Confira o pagamento no Mercado Pago; a confirmação depende da aprovação.":"Você pode consultar a situação do pagamento diretamente no Mercado Pago.";document.getElementById("toast").textContent=message;document.getElementById("toast").classList.add("show");setTimeout(()=>document.getElementById("toast").classList.remove("show"),9000)}})</script>
+</body>
+</html>

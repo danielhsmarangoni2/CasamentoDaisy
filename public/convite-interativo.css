@@ -1,0 +1,50 @@
+@charset "UTF-8";
+:root{--fuchsia:#a31053;--wine:#680c38;--paper:#fbf5f0;--muted:#7d5365;--line:#d9abbc}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:#d9c6c8;color:var(--wine);font-family:'DM Sans',Arial,sans-serif;-webkit-font-smoothing:antialiased}
+button,a{-webkit-tap-highlight-color:transparent}
+button:focus-visible,a:focus-visible{outline:3px solid var(--fuchsia);outline-offset:4px}
+.wedding-invitation{min-height:100svh;display:flex;align-items:center;justify-content:center;padding:24px 12px;position:relative;overflow:hidden;background:radial-gradient(ellipse at 10% 0,#f2d9e1 0%,transparent 43%),radial-gradient(ellipse at 90% 85%,#e3bdcd 0%,transparent 55%),#e8dee0}
+.ambient-flower{position:absolute;width:370px;height:370px;filter:blur(26px);border-radius:50%;opacity:.14;pointer-events:none;background:radial-gradient(circle,#ab105a 12%,transparent 73%)}.af1{left:-210px;top:-160px}.af2{right:-210px;bottom:-120px}
+.paper{position:relative;width:min(100%,440px);min-height:min(820px,calc(100svh - 48px));background:var(--paper);box-shadow:0 30px 90px #44152a4a,0 4px 10px #44152a16;overflow:hidden;isolation:isolate;border-radius:3px}
+.demo-flag{position:absolute;top:0;right:0;padding:7px 12px;font-size:9px;color:#fff;background:#8f154c;letter-spacing:.1em;z-index:50}
+.envelope-scene{position:relative;height:min(820px,calc(100svh - 48px));min-height:610px;overflow:hidden}
+.envelope-scene[hidden],.invitation-details[hidden]{display:none!important}
+.open-envelope{position:relative;display:block;width:100%;height:100%;min-height:inherit;border:0;border-radius:0;text-align:center;background:linear-gradient(160deg,#fffaf6 0%,#fbf4ee 45%,#f4e8e4 100%);cursor:pointer;padding:0;color:var(--wine);overflow:hidden}
+.paper-grain{position:absolute;inset:0;background-image:repeating-linear-gradient(0deg,#aa597306 0px,#fff0 2px,#fff0 4px),repeating-linear-gradient(90deg,#9d446606 0px,#fff0 2px,#fff0 7px);opacity:.6;pointer-events:none;z-index:1}
+.fine-frame{position:absolute;z-index:2;inset:18px;border:1px solid #d0aaba88;pointer-events:none}
+.cover-top{position:absolute;z-index:4;left:0;right:0;top:3.7%;height:38%;display:flex;align-items:center;flex-direction:column;pointer-events:none;transition:opacity .6s .1s,transform .9s}
+.crest{width:min(60%,235px);height:min(91%,240px);position:relative;display:block}.crest-svg{position:absolute;inset:0;width:100%;height:100%;opacity:.91}.crest-initials{display:flex;justify-content:center;align-items:center;position:absolute;top:37%;left:0;right:0;font:italic clamp(48px,11vw,74px)/1 'Italiana',Georgia,serif;color:var(--fuchsia);letter-spacing:-.06em}.crest-initials span{font:italic clamp(21px,4.5vw,29px) 'Great Vibes',cursive;margin:0 7px}
+.crest-caption{font:500 11px/1.2 'Italiana',Georgia,serif;letter-spacing:.27em;color:#904363;margin-top:-2px}.mini-rule{display:flex;align-items:center;gap:10px;color:#af3d71;font-size:11px;margin-top:13px}.mini-rule i{height:1px;width:42px;background:#d0a0b6}
+.envelope-folds{position:absolute;z-index:6;left:0;right:0;top:41%;height:36%;pointer-events:none;transform-style:preserve-3d;perspective:1000px}
+.fold-left,.fold-right,.fold-flap{position:absolute;display:block;inset:0}
+.fold-left{clip-path:polygon(0 0,53% 80%,0 100%);background:linear-gradient(110deg,#e5d1c9 0%,#fffaf6 49%,#f0ded9 100%);filter:drop-shadow(1px 1px 2px #5a0a2520);z-index:1}
+.fold-right{clip-path:polygon(100% 0,47% 80%,100% 100%);background:linear-gradient(250deg,#ddc8c3 0%,#fffaf7 47%,#eeddd7 100%);z-index:1}
+.fold-flap{clip-path:polygon(0 0,100% 0,50% 91%);background:linear-gradient(165deg,#fffcf8 8%,#f7ece6 52%,#e9d8d2 100%);filter:drop-shadow(0px 8px 8px #65233c33);z-index:3;transform-origin:top center;backface-visibility:hidden}
+.fold-flap:before{content:'';position:absolute;inset:0;background:linear-gradient(125deg,#fff8 0,transparent 60%)}
+.wax-seal{z-index:8;position:absolute;left:50%;top:72.7%;transform:translate(-50%,-50%);width:110px;height:110px;border-radius:48% 52% 49% 51%/51% 47% 53% 49%;display:grid;place-items:center;background:radial-gradient(circle at 30% 28%,#da4385,#b71260 46%,#7b003e 83%,#4e072e);box-shadow:inset 3px 3px 7px #f894be88,inset -5px -5px 7px #510022bb,0 8px 12px #54263a44,0 2px 2px #fff8;transition:transform .7s,opacity .45s}
+.wax-seal:before{content:'';position:absolute;inset:4px;border:3px solid #db528f;border-radius:46% 54% 47% 53% / 49% 52% 48% 51%;box-shadow:inset 0 2px 5px #590c3599}
+.wax-inner{position:relative;width:80px;height:80px;border-radius:50%;border:1px solid #e687b2aa;display:flex;align-items:center;justify-content:center;flex-direction:column;color:#ee9ac0;text-shadow:0 1px 1px #460b29,0 -1px 1px #fa9ec0}.wax-letters{font:italic 26px Georgia,serif;letter-spacing:-.08em}.wax-letters small{font:italic 18px 'Great Vibes',cursive}.wax-sprig{font:27px Georgia,serif;line-height:1;margin-top:-4px}
+.touch-copy{position:absolute;top:81.6%;left:0;right:0;z-index:4;color:#99506e;font:600 9px 'DM Sans',sans-serif;letter-spacing:.17em;display:flex;justify-content:center;align-items:center;gap:9px}.touch-indicator{font:24px Georgia,serif;letter-spacing:0}
+
+.cover-footer{position:absolute;z-index:4;bottom:2.8%;left:0;right:0;font:500 8px 'DM Sans',sans-serif;letter-spacing:.19em;color:#a1677f}.cover-footer span{margin:0 7px;color:#bd5b8b}
+.open-envelope:hover .wax-seal{transform:translate(-50%,-50%) scale(1.055)}
+.envelope-scene.opening .wax-seal{transform:translate(-50%,-50%) scale(1.35);opacity:0}
+.envelope-scene.opening .fold-flap{animation:unsealFlap 1.05s cubic-bezier(.3,.7,.3,1) forwards}
+.envelope-scene.opening .fold-left{animation:foldLeft .9s .12s forwards}
+.envelope-scene.opening .fold-right{animation:foldRight .9s .12s forwards}
+.envelope-scene.opening .cover-top{transform:translateY(-28px);opacity:0;transition-delay:.2s}
+.envelope-scene.opening .touch-copy,.envelope-scene.opening .cover-footer{animation:fadeOut .65s .12s both}
+@keyframes unsealFlap{0%{transform:rotateX(0deg)}40%{transform:rotateX(35deg)}100%{transform:rotateX(175deg);opacity:0}}
+@keyframes foldLeft{to{transform:translateX(-55%);opacity:0}}
+@keyframes foldRight{to{transform:translateX(55%);opacity:0}}
+@keyframes fadeOut{to{opacity:0}}
+.invitation-details{position:relative;min-height:min(820px,calc(100svh - 48px));padding:32px 33px 30px;text-align:center;background:radial-gradient(circle at 50% 4%,#fff,#fff8f4 42%,#f8efed 100%);animation:showInvite .8s cubic-bezier(.15,.7,.2,1) both}
+.inner-border{position:absolute;inset:16px;border:1px solid #d3a9b9;pointer-events:none}.inner-border:after{content:'';position:absolute;inset:7px;border:1px solid #ebd6dc}
+.overline{font-size:9px;letter-spacing:.29em;color:#94516c}.detail-monogram{font:italic 24px Georgia,serif;color:#a31158;border:1px solid #c998b0;border-radius:50%;height:65px;width:65px;margin:16px auto;display:flex;align-items:center;justify-content:center}.detail-monogram span{font:19px 'Great Vibes',cursive;margin:0 3px}
+.invitation-details h1{font:italic 44px/1 'Italiana',Georgia,serif;letter-spacing:-.045em;margin:8px 0 16px;color:#98164f}.invitation-details h1 span{font:27px 'Great Vibes',cursive}.intro-line{font:16px Georgia,serif;color:#795164;margin:0}.invitation-details h2{font:italic clamp(31px,8vw,43px)/1.1 'Great Vibes',Georgia,serif;color:#9c1955;margin:12px 0;overflow-wrap:anywhere}.invite-msg{font:15px/1.55 Georgia,serif;color:#775366;margin:0 auto;max-width:310px}.divider-floral{color:#b34c7d;margin:18px auto 10px;font-size:17px}.date-label{font:10px 'DM Sans',sans-serif;letter-spacing:.19em;color:#a25b7a;margin:0 0 5px}.date-main{font:25px 'Italiana',Georgia,serif;color:#94154f;margin:0 0 15px}.hours{display:flex;align-items:center;justify-content:center;gap:14px;margin:16px 0}.hours>div{flex:1;display:grid;gap:5px}.hours span:not(.v-divider){font:700 9px 'DM Sans',sans-serif;color:#85536b;letter-spacing:.06em}.hours b{font:33px 'Italiana',Georgia,serif;color:#a31053}.v-divider{height:52px;width:1px;background:#dcb8c7}.venue{font:25px 'Italiana',Georgia,serif;color:#94154f;margin:20px 0 4px}.address{font:11px/1.6 'DM Sans',sans-serif;color:#805869;margin:0}.closing{font:italic 16px/1.4 Georgia,serif;color:#8d496b;margin:23px auto 18px;max-width:290px}.buttons{display:flex;gap:9px;flex-direction:column;max-width:290px;margin:auto}.btn{font:600 12px 'DM Sans',sans-serif;text-decoration:none;letter-spacing:.08em;padding:13px 10px;border:1px solid #a31053}.btn.primary{background:#a31053;color:white}.btn.outline{color:#a31053;background:transparent}.sub-links{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:8px;font:11px 'DM Sans',sans-serif;margin:22px auto 0;color:#9c3567}.sub-links a{color:inherit}.back-button{border:0;background:transparent;text-decoration:underline;color:#8b5470;font:12px 'DM Sans',sans-serif;cursor:pointer;margin-top:24px}.load-status{font:12px/1.5 'DM Sans',sans-serif;position:absolute;z-index:14;left:15px;right:15px;bottom:5px;color:#a31256;text-align:center}.load-status:empty{display:none}.disabled{opacity:.4!important;pointer-events:none!important}
+@keyframes showInvite{from{opacity:0;transform:translateY(25px) scale(.985)}to{opacity:1;transform:none}}
+@media(max-width:480px){.wedding-invitation{padding:0;background:#faf4f1}.paper{width:100%;min-height:100svh;box-shadow:none}.envelope-scene{height:100svh;min-height:610px}.invitation-details{min-height:100svh;padding:31px 29px 36px}.fine-frame{inset:14px}.touch-copy{font-size:8px}.crest{width:min(58%,220px)}.cover-top{top:3%}.crest-initials{font-size:59px}}
+@media(max-height:700px) and (max-width:480px){.envelope-scene{min-height:580px}.cover-top{top:1%}.crest{max-height:210px}.touch-copy{top:82%}.crest-caption{font-size:9px}.envelope-folds{top:40%}.wax-seal{top:73%}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation-duration:.01ms!important;transition-duration:.01ms!important}}

@@ -1,0 +1,8 @@
+DAISY E VINÍCIUS — V3
+Data: 23/05/2027 | Mansão Victória, Vila Prudente
+
+6. RELATÓRIO FINANCEIRO: bruto aprovado, taxas reportadas, líquido reportado, pendente, estornos; gráficos mensais, filtros e CSV. Pagamentos duplicados por webhook são protegidos pelo registro único do Mercado Pago.
+8. BACKUP E AUDITORIA: exportação manual protegida, histórico de alterações do administrador e pagamentos, backup diário de dados criptografados para R2 e cópia incremental das fotos (requer configuração externa).
+
+O código está preparado, mas nenhuma integração real foi ligada ou publicada por este pacote.
+Leia GUIA-V3-FINANCEIRO-BACKUP.md antes de usar.

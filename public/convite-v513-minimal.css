@@ -1,0 +1,51 @@
+/* V5.13 | Opção 4 · Contemporânea Minimalista. A arte original do envelope é preservada. */
+:root {--fuchsia:#a40b51;--wine:#721342;--paper:#fff8f4;--line:#e4a8c1;}
+.wedding-invitation {background:radial-gradient(circle at 0% 0%,#f4dbe4,transparent 48%),#f2e7e9}
+.paper {border-radius:18px;background:#fff8f4}
+/* Transição limpa: breve brilho no lacre, as dobras se afastam e o convite surge. Sem pétalas voando. */
+.envelope-scene[data-stage="seal"] .reference-cover-img{animation:none;filter:brightness(1.025) saturate(1.03)}
+.envelope-scene[data-stage="seal"] .reference-paper-light{animation:minimalShine .65s both}
+.envelope-scene[data-stage="unfold"] .reference-cover-img{transform:translateY(-1%) scale(1.015);opacity:.9;filter:none}
+.envelope-scene[data-stage="unfold"] .reference-fold-left{animation:minimalLeft .67s ease-in-out both}
+.envelope-scene[data-stage="unfold"] .reference-fold-right{animation:minimalRight .67s ease-in-out both}
+.envelope-scene[data-stage="unfold"] .reference-flap{animation:minimalFold .8s cubic-bezier(.22,.75,.25,1) both}
+.envelope-scene[data-stage="letter"] .reference-cover-img{transform:translateY(-2%) scale(1.02);opacity:0;filter:none}
+.envelope-scene .petal-drift{display:none!important}
+@keyframes minimalShine{0%{opacity:0;transform:translateX(-50%)}35%{opacity:.36}100%{opacity:0;transform:translateX(55%)}}
+@keyframes minimalLeft{to{opacity:0;transform:translateX(-55%)}}
+@keyframes minimalRight{to{opacity:0;transform:translateX(55%)}}
+@keyframes minimalFold{from{transform:rotateX(0)}to{transform:rotateX(160deg);opacity:0}}
+.minimal-details {padding:0;min-height:100svh;display:flex;align-items:center;justify-content:center;background:linear-gradient(160deg,#fffaf8,#fff6f6);overflow:visible;text-align:center}
+.minimal-details .minimal-border{position:absolute;inset:17px 14px;border:1px solid #cc8aab;pointer-events:none;border-radius:16px}
+.minimal-details .minimal-border:after{content:'';position:absolute;inset:6px;border:1px solid #edcbd8;border-radius:12px}
+.minimal-content{width:100%;z-index:1;padding:32px 38px 40px;position:relative}
+.minimal-quote{font:italic 14px Georgia,serif;letter-spacing:.24em;color:#9f0d4f;margin:0 0 14px}
+.minimal-crest{width:min(54%,183px);height:auto;mix-blend-mode:multiply;display:block;margin:0 auto 10px}
+.minimal-details .minimal-couple{font:400 clamp(31px,8.2vw,45px)/1.1 'DM Sans',Arial,sans-serif;color:#9f0d4f;letter-spacing:-.055em;margin:7px auto 10px;white-space:nowrap}
+.minimal-rule{display:flex;align-items:center;justify-content:center;gap:13px;margin:12px auto 14px;color:#b31861;font-size:13px}
+.minimal-rule span{width:64px;height:1px;background:#c65f8e}.minimal-rule i{font-style:normal}
+.minimal-message{font:400 13px/1.55 'DM Sans',Arial,sans-serif;color:#7e3b55;margin:10px auto;max-width:320px}
+.minimal-diamond{font-size:13px;color:#b71263;margin:15px auto 9px}
+.minimal-date{font:500 clamp(24px,6.8vw,32px) 'DM Sans',Arial,sans-serif;letter-spacing:-.05em;color:#9f0d4f;margin:0 auto 15px}
+.minimal-hours{display:grid;grid-template-columns:1fr 1px 1fr;align-items:center;gap:14px;margin:15px auto 16px}
+.minimal-hours>div{display:flex;flex-direction:column;align-items:center;gap:5px}
+.minimal-hours span:not(.minimal-vertical-line){font:600 9px/1.4 'DM Sans',Arial,sans-serif;letter-spacing:.11em;color:#9d2c5f}
+.minimal-hours strong{font:400 31px 'DM Sans',Arial,sans-serif;color:#a40b51;letter-spacing:-.05em}
+.minimal-vertical-line{height:55px;width:1px;background:#be618f}
+.minimal-venue{display:flex;flex-direction:column;gap:3px;color:#991153;margin:4px auto 0}
+.minimal-venue strong{font:500 25px 'DM Sans',Arial,sans-serif;letter-spacing:-.05em}.minimal-venue span{font:400 12px 'DM Sans',Arial,sans-serif;color:#8c4562}
+.minimal-rule-bottom{margin:14px auto 17px}
+.minimal-buttons{display:grid;gap:8px;margin:0 auto;max-width:310px}
+.minimal-buttons .minimal-btn{border:1.5px solid #aa155b;border-radius:40px;min-height:43px;display:flex;align-items:center;justify-content:center;gap:13px;text-decoration:none;font:600 13px 'DM Sans',Arial,sans-serif;color:#9e0f52;transition:background .2s,color .2s,transform .2s}
+.minimal-buttons .minimal-btn:active{transform:scale(.98)}
+.minimal-buttons .minimal-btn.main{background:#a40b51;color:white}
+.minimal-buttons .minimal-btn span{font-size:21px;font-weight:400;line-height:1}
+.minimal-orchid-tip{position:absolute;right:18px;bottom:15px;color:#bb1462;opacity:.18;font-size:44px;pointer-events:none}
+.minimal-details .reveal-piece{opacity:0;transform:translateY(10px);transition:opacity .45s,transform .5s}
+.minimal-details.cinema-visible .reveal-piece{opacity:1;transform:none}
+.minimal-details.cinema-visible .reveal-piece:nth-child(2n){transition-delay:.1s}
+.minimal-details .demo-rsvp{position:relative;z-index:2;margin:10px 30px;}
+.minimal-details .back-button{font:500 11px 'DM Sans',Arial,sans-serif;margin:0;position:absolute;left:0;right:0;bottom:12px;z-index:2;text-align:center;opacity:.75;}
+@media(max-width:480px){.paper{border-radius:0}.minimal-details{min-height:100svh;}.minimal-content{padding:27px 34px 32px}.minimal-crest{width:min(55%,180px)}}
+@media(max-height:750px){.minimal-content{padding-top:18px;padding-bottom:20px}.minimal-crest{width:min(43%,135px)}.minimal-quote{margin-bottom:5px}.minimal-rule{margin:8px auto}.minimal-diamond{margin:8px auto}.minimal-hours{margin:7px auto}.minimal-buttons .minimal-btn{min-height:39px}.minimal-content .minimal-date{margin-bottom:8px}}
+@media(prefers-reduced-motion:reduce){.minimal-details .reveal-piece{opacity:1;transform:none}.reference-fold-left,.reference-fold-right,.reference-flap{animation:none!important}}

@@ -1,0 +1,18 @@
+/* V5.14 | Passagem: o convite sobe por trás da capa enquanto ela se dissolve. */
+.envelope-scene[data-stage="letter"]{z-index:2}
+.invitation-details.passagem{position:absolute;left:0;right:0;top:0;z-index:1;animation:cardRise 1s cubic-bezier(.16,.8,.2,1) both;box-shadow:0 -14px 40px #5a1a3a2e;will-change:transform,opacity}
+.envelope-scene[data-stage="letter"] .reference-cover-img{transition:opacity .62s ease,transform 1s cubic-bezier(.2,.7,.2,1),filter .62s ease}
+.envelope-scene[data-stage="letter"] .wax-seal,.envelope-scene[data-stage="letter"] .touch-copy{transition:opacity .4s ease}
+@keyframes cardRise{
+  from{transform:translateY(24%) scale(.94);opacity:0}
+  50%{opacity:1}
+  to{transform:none;opacity:1}
+}
+@media (prefers-reduced-motion: reduce){
+  .invitation-details.passagem{animation:none}
+  .envelope-scene[data-stage="letter"] .reference-cover-img{transition:none}
+}
+/* Durante a passagem a cena da capa vira transparente: só a capa se dissolve e o convite aparece por baixo. */
+.envelope-scene[data-stage="letter"]{background:transparent;pointer-events:none;transition:background .3s}
+.envelope-scene[data-stage="letter"] .open-envelope{background:transparent}
+.envelope-scene[data-stage="letter"] .skip-intro,.envelope-scene[data-stage="letter"] .cinema-caption{opacity:0;transition:opacity .3s}

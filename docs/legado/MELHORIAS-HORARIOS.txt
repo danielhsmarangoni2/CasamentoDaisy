@@ -1,0 +1,14 @@
+Daisy e Vinícius · atualização V5.1
+Domingo, 23 de maio de 2027
+Chegada/entrada dos convidados: 10h
+Início da cerimônia: 11h
+Local: Mansão Victória — Rua Orfanato, 440, Vila Prudente, São Paulo/SP
+
+Atualizado:
+- Site principal e demonstração do convite: data, horários em destaque e cronograma.
+- Contagem regressiva: 11h de 23/05/2027 (fuso America/Sao_Paulo).
+- Convites personalizados compartilhados por WhatsApp: informam entrada às 10h e cerimônia às 11h.
+- Arquivo casamento.ics: horários de entrada e cerimônia, sem presumir o horário final do casamento.
+- Arquivos de configuração e guias.
+
+Para ativar, publique o PROJETO COMPLETO pelo Git/Netlify CLI, incluindo as funções e as configurações do Supabase. Esta versão não foi publicada nem conectada a contas reais.

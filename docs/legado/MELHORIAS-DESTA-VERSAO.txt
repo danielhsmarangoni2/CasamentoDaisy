@@ -1,0 +1,11 @@
+Daisy e Vinícius — V2 (código preparado, NÃO publicado)
+
+2. Painel com login autorizado (Supabase Auth): RSVP, CSV, pagamentos aprovados do cartão, moderação e configurações privadas.
+3. Cartão Mercado Pago com nome obrigatório do presenteador e confirmação por webhook; Pix próprio sem nome nem aviso automático.
+4. Galeria de fotos com bucket privado, moderação e URLs de fotos aprovadas temporárias. Fotos exigem Cloudflare Turnstile.
+6. Navegação responsiva, botões para confirmar e adicionar o casamento ao calendário.
+Extra: telefone de destino dos alertas e chave Pix configuráveis no painel (sem republicação).
+Health check preparado; avisos WhatsApp oficiais dependem de conta Meta e modelo aprovado.
+
+A implementação precisa ser configurada e implantada com o projeto inteiro via Netlify + Supabase.
+LEIA PRIMEIRO: GUIA-DE-ATIVACAO-V2.md

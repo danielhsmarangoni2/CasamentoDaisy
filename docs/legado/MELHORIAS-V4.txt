@@ -1,0 +1,11 @@
+V4 • CONVITES PERSONALIZADOS COM QR CODE
+
+- Convite exclusivo por família, link e QR Code individuais
+- Cadastro prévio de nomes (adultos/crianças)
+- RSVP autorizado por token e nome, sem exceder os limites
+- Revisão da confirmação sem duplicação
+- Rotação e cancelamento de links no painel
+- RSVP legado bloqueado; backup e auditoria atualizados
+- Demos: public/admin-demo.html e public/convite-demo.html
+
+Consulte GUIA-V4-CONVITES-QR.md para configuração, segurança e limites.

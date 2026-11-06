@@ -1,0 +1,23 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Daisy e Vinícius//Casamento//PT-BR
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Casamento Daisy e Vinícius
+BEGIN:VEVENT
+UID:daisy-e-vinicius-entrada-20270523@convites-casamento
+DTSTAMP:20261031T190000Z
+DTSTART:20270523T130000Z
+SUMMARY:Entrada dos convidados - Daisy e Vinícius
+DESCRIPTION:Entrada dos convidados as 10h. Cerimonia as 11h. Mansao Victoria.
+LOCATION:Mansao Victoria\, Rua Orfanato 440\, Vila Prudente\, Sao Paulo - SP
+END:VEVENT
+BEGIN:VEVENT
+UID:daisy-e-vinicius-cerimonia-20270523@convites-casamento
+DTSTAMP:20261031T190000Z
+DTSTART:20270523T140000Z
+SUMMARY:Cerimonia de casamento - Daisy e Vinícius
+DESCRIPTION:Inicio da cerimonia as 11h. Entrada dos convidados a partir das 10h.
+LOCATION:Mansao Victoria\, Rua Orfanato 440\, Vila Prudente\, Sao Paulo - SP
+END:VEVENT
+END:VCALENDAR
