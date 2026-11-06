@@ -26,6 +26,6 @@ window.WEDDING_CONFIG = {
     '1000': ''
   },
   mercadoPagoValorLivre: '', // Link 'Seu link' do Mercado Pago: o convidado informa o valor no checkout.
-  supabaseUrl: '',         // Project URL no painel Supabase
-  supabaseAnonKey: ''      // Publishable Key ou anon public. NUNCA service_role/secret.
+  supabaseUrl: 'https://kdpehywwwviwuuigssde.supabase.co',         // Project URL no painel Supabase
+  supabaseAnonKey: 'sb_publishable_zVrg53wGxnOUKByiDSf0XA_9PraIBMI'      // Publishable Key ou anon public. NUNCA service_role/secret.
 };
