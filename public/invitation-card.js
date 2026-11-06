@@ -16,15 +16,17 @@ function ornaments(ctx,y){
  line(ctx,150,y,315,y);line(ctx,445,y,610,y);
  ctx.save();ctx.translate(380,y);ctx.rotate(Math.PI/4);ctx.strokeRect(-10,-10,20,20);ctx.restore();
 }
-function background(ctx){
+function background(ctx,logo){
  ctx.fillStyle=pale;ctx.fillRect(0,0,W,H);
  ctx.strokeStyle='#D67EA8';ctx.lineWidth=2;ctx.strokeRect(28,28,W-56,H-56);
  ctx.strokeStyle='#F1CCD9';ctx.lineWidth=1;ctx.strokeRect(42,42,W-84,H-84);
+ if(logo){ctx.drawImage(logo,260,14,240,189);return;}
  ctx.strokeStyle=pink;ctx.lineWidth=1.4;
  ctx.beginPath();ctx.arc(380,97,42,0,Math.PI*2);ctx.stroke();
  ctx.fillStyle=pink;font(ctx,30);ctx.textAlign='center';ctx.fillText('D  V',380,108);
  ctx.font='20px Georgia';ctx.fillText('♥',380,153);
 }
+function loadLogo(){return new Promise(res=>{const i=new Image();i.onload=()=>res(i);i.onerror=()=>res(null);i.src='assets/orquideas-dv.png';});}
 function qrAsImage(svg){
  return new Promise((resolve,reject)=>{
   if(!svg)return reject(new Error('QR Code não disponível.'));
@@ -37,7 +39,7 @@ function qrAsImage(svg){
 }
 async function render(canvas,svg,details){
  const ctx=canvas.getContext('2d');if(!ctx)throw new Error('Seu navegador não suporta gerar imagens.');
- canvas.width=W;canvas.height=H;ctx.clearRect(0,0,W,H);ctx.textAlign='center';background(ctx);
+ canvas.width=W;canvas.height=H;ctx.clearRect(0,0,W,H);ctx.textAlign='center';background(ctx,await loadLogo());
  ctx.fillStyle=dark;font(ctx,40);ctx.fillText('Daisy e Vinícius',380,222);
  ornaments(ctx,310);
  ctx.fillStyle=dark;font(ctx,24);

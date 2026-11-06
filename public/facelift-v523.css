@@ -18,10 +18,10 @@ h1,h2,h3{letter-spacing:-.01em}
 
 /* Cabeçalho e monograma (igual ao convite) */
 .site-header{background:rgba(255,250,252,.9);border-bottom:1px solid var(--hairline)}
-.nav-wrap{height:76px}
+.nav-wrap{height:86px}
 .brand{display:inline-flex;align-items:center;gap:0;font:inherit;color:var(--wine)}
 .brand .brand-amp,.brand .brand-flower{display:none}
-.brand-img{height:80px;width:auto;max-width:none;transition:transform .4s ease}
+.brand-img{height:70px;width:auto;max-width:none;transition:transform .4s ease}
 .brand:hover .brand-img{transform:scale(1.03)}
 .site-nav a{font-size:11px;letter-spacing:1.6px;font-weight:600;color:var(--ink)}
 .site-nav a:hover{color:var(--magenta)}
@@ -61,8 +61,11 @@ h1,h2,h3{letter-spacing:-.01em}
 .footer{background:#fff;border-top:1px solid var(--hairline)}
 
 @media(max-width:760px){
-  .brand-img{height:64px}
+  .brand-img{height:58px}
   .hero h1 em{font-size:clamp(54px,15vw,76px)}
   .section{padding:84px 0}
   .hero-lead{font-size:22px}
 }
+
+.seal-logo{width:150px;height:auto;margin:0 auto}
+@media(max-width:760px){.seal-logo{width:120px}}

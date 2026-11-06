@@ -29,7 +29,7 @@
   const second = (cfg.noivos?.segundo || 'Vinícius').trim();
   $('#nome-primeiro').textContent = first;
   $('#nome-segundo').textContent = second;
-  $('#monograma').innerHTML = `${esc(first[0])} <i>&amp;</i> ${esc(second[0])}`;
+  $('#monograma').innerHTML = '<img class="seal-logo" src="assets/orquideas-dv.png" alt="D&amp;V" width="506" height="399" />';
   $('.footer-monogram').innerHTML = `${esc(first[0])} <i>&amp;</i> ${esc(second[0])}`;
   $('title').textContent = `${first} & ${second} | Casamento`;
   $('#guest-message').placeholder = `Escreva algo especial para ${first} e ${second}...`;
