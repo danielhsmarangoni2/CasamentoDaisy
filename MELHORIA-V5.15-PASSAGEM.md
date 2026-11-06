@@ -10,3 +10,8 @@ Sem migração de banco. Para ativar: publique `public/`.
 
 ## Atualização V5.17 · Capa sem "Nosso casamento"
 - A arte da capa (`public/assets/envelope-oficial-fucsia.webp`) tinha o texto "NOSSO CASAMENTO" gravado na imagem. O texto foi apagado e o fundo de papel reconstruído. A versão original está em `docs/legado/assets/envelope-oficial-fucsia-com-texto.webp`.
+
+## Atualização V5.18 · Confirmar presença leva ao fluxo do site
+- Em `convite-interativo.html?demo=1`, o botão "Confirmar presença" agora abre `convite-demo.html?convite=demonstracao#confirmacao`, com a seleção de convidados e quantidades. Antes, abria uma simulação simplificada.
+- Com o link real do convite (token), o botão já abria `index.html?convite=TOKEN#confirmacao`. Esse comportamento não mudou.
+- Os três botões do convite levam às seções do site: "Confirmar presença" → `#confirmacao`, "Como chegar" → `#celebracao` (onde ficam endereço e mapa), "Lista de presentes" → `#presentes`. Com o link real do convite, o token é mantido nos três.

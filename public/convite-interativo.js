@@ -8,13 +8,23 @@ const btn=document.getElementById('open-envelope');
 const wrapper=document.getElementById('envelope-scene');
 const details=document.getElementById('invitation-details');
 const confirm=document.getElementById('rsvp-link');
+const venue=document.getElementById('venue-link');
+const gift=document.getElementById('gift-link');
 /* Os nomes são mantidos exclusivamente no controle interno de convites; não aparecem na arte. */
-function allowConfirm(url){confirm.href=url;confirm.removeAttribute('aria-disabled');confirm.classList.remove('disabled');}
-function blockConfirm(){confirm.removeAttribute('href');confirm.setAttribute('aria-disabled','true');confirm.classList.add('disabled');}
+// Os três botões levam às seções do site, com o mesmo convite (token ou demonstração).
+function linkTo(a,url){a.href=url;a.removeAttribute('aria-disabled');a.classList.remove('disabled');}
+function allowConfirm(url){
+ linkTo(confirm,url);
+ linkTo(venue,url.replace(/#confirmacao$/,'#celebracao'));
+ linkTo(gift,url.replace(/#confirmacao$/,'#presentes'));
+}
+function blockConfirm(){
+ [confirm,venue,gift].forEach(a=>{a.removeAttribute('href');a.setAttribute('aria-disabled','true');a.classList.add('disabled');});
+}
 if(demo){
  document.getElementById('demo-ribbon').hidden=false;
-
- blockConfirm();
+ // Prévia: o botão leva ao fluxo real do site (convidados e quantidades), com dados fictícios.
+ allowConfirm('convite-demo.html?convite=demonstracao#confirmacao');
 }else if(/^[A-Za-z0-9_-]{32}$/.test(token)){
  blockConfirm();status.textContent='Personalizando seu convite…';
  fetch('/.netlify/functions/invite?token='+encodeURIComponent(token),{cache:'no-store'})
@@ -56,15 +66,5 @@ document.getElementById('close-envelope').addEventListener('click',()=>{
  btn.focus({preventScroll:true});window.scrollTo({top:0,behavior:reduced?'instant':'smooth'});
 });
 if(demo){
- confirm.classList.remove('disabled'); confirm.removeAttribute('aria-disabled');
- confirm.href='#demo-rsvp';
- confirm.addEventListener('click',e=>{
-   e.preventDefault();const box=document.getElementById('demo-rsvp');
-   box.hidden=false;box.scrollIntoView({behavior:reduced?'instant':'smooth',block:'center'});
- });
- document.getElementById('demo-confirm-btn').addEventListener('click',()=>{
-   const yes=document.querySelector('input[name="demo-answer"]:checked')?.value==='sim';
-   document.getElementById('demo-confirm-status').textContent=yes?'✅ Presença simulada. Nenhuma informação foi enviada.':'Resposta simulada. Nenhuma informação foi enviada.';
- });
 }
 })();
