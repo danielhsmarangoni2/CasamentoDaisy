@@ -1,3 +1,42 @@
-<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>QR Code do mural | Daisy e Vinícius</title><link rel="stylesheet" href="styles.css"><script src="qr-local.js" defer></script><style>
-body{background:#faf0f5;padding:24px;font-family:'DM Sans',sans-serif;color:#4f243b}.print-card{max-width:490px;min-height:660px;background:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;margin:20px auto;padding:46px 35px;text-align:center;border:5px double #c5a16e;outline:10px solid #fff;box-shadow:0 10px 35px #69213c19}.print-card h1{font-family:'Playfair Display',Georgia,serif;font-size:2.9rem;color:#a92360;font-weight:500;margin:8px}.print-card h1 em{color:#a92360}.print-card .caption{letter-spacing:.2em;font-size:.72rem;color:#9b4473;font-weight:700}.print-card .subtitle{line-height:1.6;color:#654a57}.print-card .footer{font-size:1rem;font-weight:700;color:#7c3d5b;margin-top:23px}.print-card #qr{margin:24px 0;min-height:210px;min-width:210px}.print-card #qr svg{width:210px;height:210px}.print-btn{display:block;margin:16px auto;padding:13px 26px;background:#a92360;border:0;border-radius:12px;color:white;font-weight:700}.warning{text-align:center;font-size:.8rem;color:#7c5c6b;max-width:500px;margin:15px auto}
-@media print{body{background:#fff;padding:0}.print-card{box-shadow:none;margin:0 auto;outline:none;border:5px double #c5a16e}.print-btn,.warning{display:none}} </style></head><body><main class="print-card"><span class="caption">O NOSSO GRANDE DIA</span><h1>Daisy <em>&</em> Vinícius</h1><p class="subtitle">Registre os melhores momentos do casamento! Escaneie o QR Code e compartilhe suas fotos e mensagens conosco.</p><div id="qr"></div><p class="footer">23 · 05 · 2027</p><p class="caption">MANSÃO VICTÓRIA · SÃO PAULO</p></main><button class="print-btn" onclick="print()">Imprimir para as mesas</button><p class="warning" id="warning">O QR Code usará o endereço definitivo do site publicado. Não imprima a versão aberta como arquivo local.</p><script>document.addEventListener('DOMContentLoaded',()=>{const target=location.origin+'/#mural';if(location.protocol==='file:'){document.getElementById('warning').textContent='Publique o site antes de imprimir: este endereço local ainda não funciona para os convidados.';return;}try{window.WeddingQR.render(document.getElementById('qr'),target)}catch{document.getElementById('warning').textContent='Não foi possível gerar o QR Code.'}});</script></body></html>
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>QR Code do mural | Daisy e Vinícius</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet"><script src="qr-local.js" defer></script>
+<style>
+:root{--plum:#4a0d2c;--wine:#7a1a46;--rose:#b5517f;--gold:#b89a6a;--gold-soft:#e4d3b3;--ivory:#fbf7f3;--paper:#ffffff;--ink:#3d2433;--muted:#7d6674}
+*{box-sizing:border-box}
+body{margin:0;background:radial-gradient(circle at 50% 0%,#fff 0%,var(--ivory) 55%,#f3e8ea 100%);padding:32px 16px 40px;font-family:'Montserrat',system-ui,sans-serif;color:var(--ink);-webkit-font-smoothing:antialiased}
+.qr-card{position:relative;max-width:500px;margin:0 auto;background:var(--paper);padding:56px 44px 48px;text-align:center;border-radius:6px;box-shadow:0 1px 0 #efe3e7,0 24px 60px -18px rgba(74,13,44,.28)}
+.qr-card:before{content:"";position:absolute;inset:12px;border:1px solid var(--gold-soft);border-radius:3px;pointer-events:none}
+.qr-logo{display:block;width:132px;height:auto;margin:0 auto 14px}
+.qr-kicker{display:inline-block;font-family:'Montserrat',sans-serif;font-size:.66rem;font-weight:500;letter-spacing:.42em;color:var(--gold);text-transform:uppercase;margin:0 0 14px;padding-left:.42em}
+.qr-title{font-family:'Cormorant Garamond',Georgia,serif;font-weight:500;font-size:3.1rem;line-height:1;color:var(--plum);margin:0;letter-spacing:-.01em}
+.qr-title em{font-style:italic;color:var(--rose);font-weight:400;padding:0 .08em}
+.qr-orn{display:flex;align-items:center;justify-content:center;gap:12px;margin:20px auto 18px;max-width:240px;color:var(--gold)}
+.qr-orn:before,.qr-orn:after{content:"";flex:1;height:1px;background:linear-gradient(90deg,transparent,var(--gold))}
+.qr-orn:after{background:linear-gradient(270deg,transparent,var(--gold))}
+.qr-orn span{font-size:.7rem;letter-spacing:.2em}
+.qr-sub{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.28rem;line-height:1.45;color:var(--muted);margin:0 auto;max-width:360px;font-style:italic}
+.qr-frame{position:relative;display:inline-block;margin:28px 0 22px;padding:16px;background:#fff;border-radius:10px;box-shadow:0 0 0 1px var(--gold-soft),0 12px 30px -12px rgba(74,13,44,.25)}
+#qr{min-height:210px;min-width:210px}
+#qr svg{width:210px;height:210px;display:block}
+.qr-hint{font-family:'Montserrat',sans-serif;font-size:.7rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin:0 0 26px}
+.qr-date{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.7rem;font-weight:500;color:var(--plum);margin:0;letter-spacing:.02em}
+.qr-place{font-family:'Montserrat',sans-serif;font-size:.68rem;font-weight:500;letter-spacing:.3em;color:var(--rose);text-transform:uppercase;margin:12px 0 0}
+.print-btn{display:block;margin:26px auto 0;padding:14px 32px;background:var(--plum);border:0;border-radius:999px;color:#fff;font-family:'Montserrat',sans-serif;font-weight:500;font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;cursor:pointer}
+.warning{text-align:center;font-size:.76rem;color:var(--muted);max-width:480px;margin:16px auto;line-height:1.6}
+@media (max-width:520px){.qr-title{font-size:2.5rem}.qr-card{padding:46px 26px 40px}.qr-sub{font-size:1.14rem}}
+@media print{body{background:#fff;padding:0}.qr-card{box-shadow:none;margin:0 auto}.print-btn,.warning{display:none}}
+</style></head><body>
+<main class="qr-card">
+  <img class="qr-logo" src="assets/orquideas-dv.png" alt="Logo Daisy e Vinícius" width="506" height="399" />
+  <span class="qr-kicker">Mural de recordações</span>
+  <h1 class="qr-title">Daisy <em>&amp;</em> Vinícius</h1>
+  <p class="qr-orn"><span>♡</span></p>
+  <p class="qr-sub">Registre os melhores momentos do casamento! Escaneie o QR Code e compartilhe suas fotos e mensagens com a gente.</p>
+  <div class="qr-frame"><div id="qr"></div></div>
+  <p class="qr-hint">Aponte a câmera do celular para o código</p>
+  <p class="qr-date">23 de maio de 2027</p>
+  <p class="qr-place">Mansão Victória · São Paulo</p>
+</main>
+<button class="print-btn" onclick="print()">Imprimir para as mesas</button>
+<p class="warning" id="warning">O QR Code usará o endereço definitivo do site publicado. Não imprima a versão aberta como arquivo local.</p>
+<script>document.addEventListener('DOMContentLoaded',()=>{const target=location.origin+'/#mural';if(location.protocol==='file:'){document.getElementById('warning').textContent='Publique o site antes de imprimir: este endereço local ainda não funciona para os convidados.';return;}try{window.WeddingQR.render(document.getElementById('qr'),target)}catch{document.getElementById('warning').textContent='Não foi possível gerar o QR Code.'}});</script>
+</body></html>

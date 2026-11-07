@@ -30,7 +30,7 @@
   $('#nome-primeiro').textContent = first;
   $('#nome-segundo').textContent = second;
   $('#monograma').innerHTML = '<img class="seal-logo" src="assets/orquideas-dv.png" alt="D&amp;V" width="506" height="399" />';
-  $('.footer-monogram').innerHTML = `${esc(first[0])} <i>&amp;</i> ${esc(second[0])}`;
+  if ($('.footer-monogram') && !$('.footer-monogram').querySelector('img')) $('.footer-monogram').innerHTML = `${esc(first[0])} <i>&amp;</i> ${esc(second[0])}`; // Mantém a logo oficial no rodapé
   $('title').textContent = `${first} & ${second} | Casamento`;
   $('#guest-message').placeholder = `Escreva algo especial para ${first} e ${second}...`;
   const nav = $('#nav-list');
