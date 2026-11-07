@@ -73,3 +73,9 @@
 .invite-admin-qr{max-width:124px;width:124px;aspect-ratio:1}
 .invite-action-buttons{display:flex;flex-wrap:wrap;gap:6px}
 @media(max-width:600px){.invite-share-buttons >*{flex:1 1 100%;justify-content:center}.invite-admin-grid{grid-template-columns:minmax(0,1fr)}}
+
+/* Logo oficial no cabeçalho do painel */
+.admin-logo{display:flex;flex-direction:column;align-items:flex-start;gap:4px;text-decoration:none}
+.admin-logo img{height:64px;width:auto;display:block}
+.admin-logo span{font-size:.6rem;letter-spacing:.2em;color:var(--berry)}
+@media(max-width:760px){.admin-logo img{height:52px}}

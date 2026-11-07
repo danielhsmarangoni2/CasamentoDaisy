@@ -1,0 +1,17 @@
+Substituir/enviar estes arquivos na pasta public/ do repositório (manter os demais):
+
+public/index.html
+public/app.js
+public/icons.css                  (NOVO)
+public/facelift-v523.css
+public/styles.css
+public/admin.html
+public/admin.css
+public/cartao-mural.html
+public/convite-interativo.html
+public/convite-interativo.css
+public/convite-demo.html
+public/casamento.ics
+public/assets/icons.svg           (NOVO, pasta assets/)
+
+Depois do commit, o Netlify faz o deploy sozinho.

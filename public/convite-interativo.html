@@ -17,6 +17,7 @@
   <link rel="stylesheet" href="convite-v513-minimal.css">
   <link rel="stylesheet" href="convite-v514-passagem.css">
   <script src="convite-interativo.js" defer></script>
+  <link rel="stylesheet" href="icons.css" />
 </head>
 <body>
 <main class="wedding-invitation">
@@ -36,7 +37,7 @@
         <span class="reference-flap" aria-hidden="true"></span>
         <!-- This label is real text and can be individualized by an exclusive invite URL. -->
       </button>
-      <button type="button" id="skip-intro" class="skip-intro" hidden>Pular animação →</button>
+      <button type="button" id="skip-intro" class="skip-intro" hidden>Pular animação</button>
       <div class="cinema-caption" id="cinema-caption" aria-live="polite" aria-atomic="true"></div>
     </div>
     <div id="invitation-details" class="invitation-details cinematic-details minimal-details" hidden>
@@ -45,9 +46,9 @@
         <p class="minimal-quote reveal-piece">Onde fores, irei.</p>
         <img class="minimal-crest reveal-piece" src="assets/orquideas-dv.png" alt="Monograma D e V rodeado por orquídeas fúcsia" decoding="async">
         <h1 class="minimal-couple reveal-piece">Daisy e Vinícius</h1>
-        <div class="minimal-rule reveal-piece" aria-hidden="true"><span></span><i>✦</i><span></span></div>
+        <div class="minimal-rule reveal-piece" aria-hidden="true"><span></span><i><svg class="ico ico-spark" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-spark"/></svg></i><span></span></div>
         <p class="minimal-message reveal-piece">Com muita alegria, convidamos você<br class="wide-only"> para celebrar conosco esse dia tão especial.</p>
-        <div class="minimal-diamond reveal-piece" aria-hidden="true">✦</div>
+        <div class="minimal-diamond reveal-piece" aria-hidden="true"><svg class="ico ico-spark" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-spark"/></svg></div>
         <p class="minimal-date reveal-piece">23 de maio de 2027</p>
         <div class="minimal-hours reveal-piece">
            <div><span>ENTRADA DOS CONVIDADOS</span><strong>10h</strong></div>
@@ -55,13 +56,14 @@
            <div><span>CERIMÔNIA</span><strong>11h</strong></div>
         </div>
         <div class="minimal-venue reveal-piece"><strong>Mansão Victória</strong><span>São Paulo, SP</span></div>
-        <div class="minimal-rule minimal-rule-bottom reveal-piece" aria-hidden="true"><span></span><i>✦</i><span></span></div>
+        <div class="minimal-map-links reveal-piece"><a href="https://waze.com/ul?q=Mans%C3%A3o%20Vict%C3%B3ria%2C%20Rua%20Orfanato%2C%20440%2C%20Vila%20Prudente%2C%20S%C3%A3o%20Paulo%2C%20SP&amp;navigate=yes" target="_blank" rel="noopener noreferrer">Abrir no Waze <svg class="ico" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-arrow-ext"/></svg></a><a href="https://www.google.com/maps/dir/?api=1&amp;destination=Mans%C3%A3o%20Vict%C3%B3ria%2C%20Rua%20Orfanato%2C%20440%2C%20Vila%20Prudente%2C%20S%C3%A3o%20Paulo%2C%20SP%2C%2003131-010" target="_blank" rel="noopener noreferrer">Abrir no Google Maps <svg class="ico" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-arrow-ext"/></svg></a></div>
+        <div class="minimal-rule minimal-rule-bottom reveal-piece" aria-hidden="true"><span></span><i><svg class="ico ico-spark" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-spark"/></svg></i><span></span></div>
         <div class="minimal-buttons reveal-piece">
-          <a id="rsvp-link" class="minimal-btn main" href="convite-demo.html?convite=demonstracao#confirmacao"><span aria-hidden="true">▣</span>Confirmar presença</a>
-          <a id="venue-link" class="minimal-btn outline" href="convite-demo.html?convite=demonstracao#celebracao"><span aria-hidden="true">⌖</span>Como chegar</a>
-          <a id="gift-link" class="minimal-btn outline" href="convite-demo.html?convite=demonstracao#presentes"><span aria-hidden="true">♧</span>Lista de presentes</a>
+          <a id="rsvp-link" class="minimal-btn main" href="convite-demo.html?convite=demonstracao#confirmacao"><span aria-hidden="true"><svg class="ico" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-check"/></svg></span>Confirmar presença</a>
+          <a id="venue-link" class="minimal-btn outline" href="convite-demo.html?convite=demonstracao#celebracao"><span aria-hidden="true"><svg class="ico" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-pin"/></svg></span>Como chegar</a>
+          <a id="gift-link" class="minimal-btn outline" href="convite-demo.html?convite=demonstracao#presentes"><span aria-hidden="true"><svg class="ico" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-gift"/></svg></span>Lista de presentes</a>
         </div>
-        <div class="minimal-orchid-tip" aria-hidden="true">✿</div>
+        <div class="minimal-orchid-tip" aria-hidden="true"><svg class="ico" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-flower"/></svg></div>
       </div>
       <section id="demo-rsvp" class="demo-rsvp" hidden aria-label="Demonstração de confirmação">
         <p>Prévia de confirmação</p>
@@ -70,7 +72,7 @@
         <p id="demo-confirm-status" role="status"></p>
         <small>Simulação local: nenhuma resposta será enviada ou salva.</small>
       </section>
-      <button type="button" id="close-envelope" class="back-button">↶ Rever abertura</button>
+      <button type="button" id="close-envelope" class="back-button"><svg class="ico" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-undo"/></svg> Rever abertura</button>
     </div>
     <p id="load-status" class="load-status" role="status" aria-live="polite"></p>
   </section>

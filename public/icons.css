@@ -1,0 +1,4 @@
+/* Sistema de ícones: traço fino, cor herdada do texto, tamanho acompanha a fonte */
+.ico{width:1em;height:1em;display:inline-block;vertical-align:-.14em;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+.ico-spark{fill:currentColor;stroke:none;width:.82em;height:.82em;vertical-align:.02em}
+a .ico,button .ico,.btn .ico{margin-left:.35em}

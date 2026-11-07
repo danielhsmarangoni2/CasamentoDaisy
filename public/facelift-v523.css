@@ -81,3 +81,23 @@ h1,h2,h3{letter-spacing:-.01em}
 .contributions-heading .monogram-mini-img{display:block;width:150px;height:auto;margin:0 auto 22px;background:none;border:0}
 section[id]{scroll-margin-top:-70px!important}
 @media(max-width:760px){section[id]{scroll-margin-top:-30px!important}.contributions-heading .monogram-mini-img{width:120px}}
+
+/* Barra fixa de ações no celular: espaço no fim da página para o último botão não ficar escondido */
+@media (max-width:760px){body{padding-bottom:calc(104px + env(safe-area-inset-bottom))}}
+
+/* Foto do casal na seção "Nossa história": moldura e tom do site */
+.history-frame{border-color:var(--gold-soft,#e4d3b3);background:#fffdfb;box-shadow:18px 16px 0 #f8e2eb,0 22px 40px -22px rgba(74,13,44,.35)}
+.history-frame img.couple-photo{aspect-ratio:1 / 1.1;object-fit:cover;object-position:50% 24%;width:100%;filter:saturate(.96) sepia(.06) contrast(1.02);border-radius:2px}
+
+/* Confirmação de presença: logo oficial no lugar do monograma de texto */
+img.rsvp-monogram{display:block;width:110px;height:auto;margin:0 auto 14px;border:0;border-radius:0}
+
+/* Diálogo de presentes: logo oficial no lugar do monograma de texto */
+img.gift-dialog-monogram{display:block;width:72px;height:auto;margin:0 auto 14px;border:0;border-radius:0}
+@media(max-width:600px){img.gift-dialog-monogram{width:56px;margin-bottom:10px}}
+
+/* Ícones: traço fino e uniforme no lugar dos caracteres de fonte */
+.detail-icon svg{width:26px;height:26px;display:block}
+.rsvp-choice-icon svg{width:22px;height:22px;display:block}
+.payment-icon svg{width:24px;height:24px;display:block;margin:0 auto}
+.file-icon svg{width:20px;height:20px;display:block}

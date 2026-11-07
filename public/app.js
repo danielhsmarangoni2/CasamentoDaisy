@@ -574,7 +574,7 @@
     const wrap=$('#wall-posts');wrap.replaceChildren();
     if (!selection.length) {
       const box=document.createElement('div');box.className='empty-wall';
-      const symbol=document.createElement('span');symbol.className='empty-icon';symbol.textContent='✳';
+      const symbol=document.createElement('span');symbol.className='empty-icon';symbol.innerHTML='<svg class="ico ico-spark" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-spark"/></svg>';
       const heading=document.createElement('h4');heading.textContent=posts.length?'Sem publicações nesta categoria.':'As primeiras lembranças começam aqui.';
       const msg=document.createElement('p');msg.textContent=posts.length?'Escolha outro filtro para ver as lembranças.':'Deixe uma foto ou recado para os noivos. Eles serão exibidos após aprovação.';
       box.append(symbol,heading,msg);wrap.append(box);return;
@@ -663,7 +663,7 @@
       toast('Lembrança enviada com sucesso!');
       window.WeddingAntiBot?.reset('mural');
     }catch(error){console.error(error);setStatus('#mural-form-status',error.message || 'Falha no envio. Tente de novo.');}
-    finally{submitting=false;$('#submit-post').disabled=false;$('#submit-post').innerHTML='Enviar minha lembrança <span>↗</span>';}
+    finally{submitting=false;$('#submit-post').disabled=false;$('#submit-post').innerHTML='Enviar minha lembrança <span><svg class="ico" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-arrow-ext"/></svg></span>';}
   });
   connectMural();
   // Recarrega URLs assinadas ao retornar ao site (elas expiram por segurança).

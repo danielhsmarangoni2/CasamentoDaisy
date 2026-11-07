@@ -48,3 +48,7 @@ button:focus-visible,a:focus-visible{outline:3px solid var(--fuchsia);outline-of
 @media(max-width:480px){.wedding-invitation{padding:0;background:#faf4f1}.paper{width:100%;min-height:100svh;box-shadow:none}.envelope-scene{height:100svh;min-height:610px}.invitation-details{min-height:100svh;padding:31px 29px 36px}.fine-frame{inset:14px}.touch-copy{font-size:8px}.crest{width:min(58%,220px)}.cover-top{top:3%}.crest-initials{font-size:59px}}
 @media(max-height:700px) and (max-width:480px){.envelope-scene{min-height:580px}.cover-top{top:1%}.crest{max-height:210px}.touch-copy{top:82%}.crest-caption{font-size:9px}.envelope-folds{top:40%}.wax-seal{top:73%}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+
+/* Links de rota no convite: Waze e Google Maps */
+.minimal-map-links{display:flex;flex-wrap:wrap;justify-content:center;gap:8px 18px;margin:-4px auto 0}
+.minimal-map-links a{font:600 12px 'DM Sans',Arial,sans-serif;letter-spacing:.06em;color:#991153;text-decoration:underline;text-underline-offset:3px}
