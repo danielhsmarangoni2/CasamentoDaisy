@@ -81,11 +81,13 @@
     if (remaining <= 0) {
       $('#countdown-caption').textContent = 'O nosso grande dia chegou! Obrigado por fazer parte dele.';
       ['days','hours','minutes','seconds'].forEach(p => $(`#cd-${p}`).textContent = '00');
+      if ($('#hero-countdown')) $('#hero-countdown').textContent = 'Hoje é o grande dia!';
       return;
     }
     const seconds = Math.floor(remaining / 1000);
     const values = [Math.floor(seconds/86400),Math.floor(seconds/3600)%24,Math.floor(seconds/60)%60,seconds%60];
     ['days','hours','minutes','seconds'].forEach((key, i) => $(`#cd-${key}`).textContent=String(values[i]).padStart(2,'0'));
+    if ($('#hero-countdown')) $('#hero-countdown').textContent = `Faltam ${values[0]} dias, ${values[1]}h ${String(values[2]).padStart(2,'0')}min ${String(values[3]).padStart(2,'0')}s`;
   }
   countdown();
   if (weddingDate) window.setInterval(countdown, 1000);
