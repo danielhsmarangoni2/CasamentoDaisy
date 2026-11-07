@@ -1,26 +1,26 @@
-<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>QR Code do mural | Daisy e Vinícius</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet"><script src="qr-local.js" defer></script>
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>QR Code do mural | Daisy e Vinícius</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet" /><script src="qr-local.js" defer></script>
 <style>
 :root{--plum:#4a0d2c;--wine:#7a1a46;--rose:#b5517f;--gold:#b89a6a;--gold-soft:#e4d3b3;--ivory:#fbf7f3;--paper:#ffffff;--ink:#3d2433;--muted:#7d6674}
 *{box-sizing:border-box}
-body{margin:0;background:radial-gradient(circle at 50% 0%,#fff 0%,var(--ivory) 55%,#f3e8ea 100%);padding:32px 16px 40px;font-family:'Montserrat',system-ui,sans-serif;color:var(--ink);-webkit-font-smoothing:antialiased}
+body{margin:0;background:radial-gradient(circle at 50% 0%,#fff 0%,var(--ivory) 55%,#f3e8ea 100%);padding:32px 16px 40px;font-family:'DM Sans',Arial,sans-serif;color:var(--ink);-webkit-font-smoothing:antialiased}
 .qr-card{position:relative;max-width:500px;margin:0 auto;background:var(--paper);padding:56px 44px 48px;text-align:center;border-radius:6px;box-shadow:0 1px 0 #efe3e7,0 24px 60px -18px rgba(74,13,44,.28)}
 .qr-card:before{content:"";position:absolute;inset:12px;border:1px solid var(--gold-soft);border-radius:3px;pointer-events:none}
 .qr-logo{display:block;width:132px;height:auto;margin:0 auto 14px}
-.qr-kicker{display:inline-block;font-family:'Montserrat',sans-serif;font-size:.66rem;font-weight:500;letter-spacing:.42em;color:var(--gold);text-transform:uppercase;margin:0 0 14px;padding-left:.42em}
-.qr-title{font-family:'Cormorant Garamond',Georgia,serif;font-weight:500;font-size:3.1rem;line-height:1;color:var(--plum);margin:0;letter-spacing:-.01em}
+.qr-kicker{display:inline-block;font-family:'DM Sans',Arial,sans-serif;font-size:.66rem;font-weight:500;letter-spacing:.42em;color:var(--gold);text-transform:uppercase;margin:0 0 14px;padding-left:.42em}
+.qr-title{font-family:'Playfair Display',Georgia,serif;font-weight:500;font-size:3.1rem;line-height:1;color:var(--plum);margin:0;letter-spacing:-.01em}
 .qr-title em{font-style:italic;color:var(--rose);font-weight:400;padding:0 .08em}
 .qr-orn{display:flex;align-items:center;justify-content:center;gap:12px;margin:20px auto 18px;max-width:240px;color:var(--gold)}
 .qr-orn:before,.qr-orn:after{content:"";flex:1;height:1px;background:linear-gradient(90deg,transparent,var(--gold))}
 .qr-orn:after{background:linear-gradient(270deg,transparent,var(--gold))}
 .qr-orn span{font-size:.7rem;letter-spacing:.2em}
-.qr-sub{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.28rem;line-height:1.45;color:var(--muted);margin:0 auto;max-width:360px;font-style:italic}
+.qr-sub{font-family:'Playfair Display',Georgia,serif;font-size:1.28rem;line-height:1.45;color:var(--muted);margin:0 auto;max-width:360px;font-style:italic}
 .qr-frame{position:relative;display:inline-block;margin:28px 0 22px;padding:16px;background:#fff;border-radius:10px;box-shadow:0 0 0 1px var(--gold-soft),0 12px 30px -12px rgba(74,13,44,.25)}
 #qr{min-height:210px;min-width:210px}
 #qr svg{width:210px;height:210px;display:block}
-.qr-hint{font-family:'Montserrat',sans-serif;font-size:.7rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin:0 0 26px}
-.qr-date{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.7rem;font-weight:500;color:var(--plum);margin:0;letter-spacing:.02em}
-.qr-place{font-family:'Montserrat',sans-serif;font-size:.68rem;font-weight:500;letter-spacing:.3em;color:var(--rose);text-transform:uppercase;margin:12px 0 0}
-.print-btn{display:block;margin:26px auto 0;padding:14px 32px;background:var(--plum);border:0;border-radius:999px;color:#fff;font-family:'Montserrat',sans-serif;font-weight:500;font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;cursor:pointer}
+.qr-hint{font-family:'DM Sans',Arial,sans-serif;font-size:.7rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin:0 0 26px}
+.qr-date{font-family:'Playfair Display',Georgia,serif;font-size:1.7rem;font-weight:500;color:var(--plum);margin:0;letter-spacing:.02em}
+.qr-place{font-family:'DM Sans',Arial,sans-serif;font-size:.68rem;font-weight:500;letter-spacing:.3em;color:var(--rose);text-transform:uppercase;margin:12px 0 0}
+.print-btn{display:block;margin:26px auto 0;padding:14px 32px;background:var(--plum);border:0;border-radius:999px;color:#fff;font-family:'DM Sans',Arial,sans-serif;font-weight:500;font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;cursor:pointer}
 .warning{text-align:center;font-size:.76rem;color:var(--muted);max-width:480px;margin:16px auto;line-height:1.6}
 @media (max-width:520px){.qr-title{font-size:2.5rem}.qr-card{padding:46px 26px 40px}.qr-sub{font-size:1.14rem}}
 @media print{body{background:#fff;padding:0}.qr-card{box-shadow:none;margin:0 auto}.print-btn,.warning{display:none}}

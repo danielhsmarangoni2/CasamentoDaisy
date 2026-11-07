@@ -33,7 +33,7 @@ h1,h2,h3{letter-spacing:-.01em}
 .hero-pattern{opacity:.25}
 .hero .eyebrow{letter-spacing:3px;font-size:10px;color:var(--magenta)}
 .hero h1{font-weight:400;letter-spacing:-.02em;color:var(--wine)}
-.hero h1 em{font-family:'Great Vibes',cursive;color:var(--magenta);font-size:clamp(60px,5.6vw,92px)}
+.hero h1 em{font-family:'Playfair Display',Georgia,serif;font-style:italic;color:var(--magenta);font-size:clamp(60px,5.6vw,92px)}
 .hero-lead{font-style:italic;font-size:26px;color:var(--wine)}
 .hero-intro{color:#7a5f6e;font-size:16px;line-height:1.8}
 
