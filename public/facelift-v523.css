@@ -107,3 +107,8 @@ img.gift-dialog-monogram{display:block;width:72px;height:auto;margin:0 auto 14px
   .mobile-fixed-actions{display:none!important}
   body{padding-bottom:env(safe-area-inset-bottom)}
 }
+
+/* Música do casal (abertura) */
+.hero-music{max-width:420px;width:100%;margin:22px auto 0;}
+.hero-music-label{font:600 11px 'DM Sans',Arial,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#991153;text-align:center;margin:0 0 10px;}
+.hero-music iframe{display:block;width:100%;}
