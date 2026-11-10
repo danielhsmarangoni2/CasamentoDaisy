@@ -33,7 +33,7 @@ h1,h2,h3{letter-spacing:-.01em}
 .hero-pattern{opacity:.25}
 .hero .eyebrow{letter-spacing:3px;font-size:10px;color:var(--magenta)}
 .hero h1{font-weight:400;letter-spacing:-.02em;color:var(--wine)}
-.hero h1 em{font-family:'Great Vibes',cursive;color:var(--magenta);font-size:clamp(60px,5.6vw,92px)}
+.hero h1 em{font-family:'Playfair Display',Georgia,serif;font-style:italic;color:var(--magenta);font-size:clamp(60px,5.6vw,92px)}
 .hero-lead{font-style:italic;font-size:26px;color:var(--wine)}
 .hero-intro{color:#7a5f6e;font-size:16px;line-height:1.8}
 
@@ -72,3 +72,43 @@ h1,h2,h3{letter-spacing:-.01em}
 
 /* Contador no topo (hero) */
 .hero-countdown{margin:6px 0 18px;font:500 15px/1.4 var(--font-body, system-ui);letter-spacing:.06em;color:#86144f;text-align:center;font-variant-numeric:tabular-nums}
+
+/* Logo oficial no rodapé */
+.footer-logo{display:block;margin:0 auto 18px;height:120px;width:auto}
+@media(max-width:760px){.footer-logo{height:96px}}
+
+/* Logo oficial no cabeçalho de Presentes + rolagem dos links do menu alinhada ao título */
+.contributions-heading .monogram-mini-img{display:block;width:150px;height:auto;margin:0 auto 22px;background:none;border:0}
+section[id]{scroll-margin-top:-70px!important}
+@media(max-width:760px){section[id]{scroll-margin-top:-30px!important}.contributions-heading .monogram-mini-img{width:120px}}
+
+/* Barra fixa de ações no celular: espaço no fim da página para o último botão não ficar escondido */
+@media (max-width:760px){body{padding-bottom:calc(104px + env(safe-area-inset-bottom))}}
+
+/* Foto do casal na seção "Nossa história": moldura e tom do site */
+.history-frame{border-color:var(--gold-soft,#e4d3b3);background:#fffdfb;box-shadow:18px 16px 0 #f8e2eb,0 22px 40px -22px rgba(74,13,44,.35)}
+.history-frame img.couple-photo{aspect-ratio:1 / 1.1;object-fit:cover;object-position:50% 24%;width:100%;filter:saturate(.96) sepia(.06) contrast(1.02);border-radius:2px}
+
+/* Confirmação de presença: logo oficial no lugar do monograma de texto */
+img.rsvp-monogram{display:block;width:110px;height:auto;margin:0 auto 14px;border:0;border-radius:0}
+
+/* Diálogo de presentes: logo oficial no lugar do monograma de texto */
+img.gift-dialog-monogram{display:block;width:72px;height:auto;margin:0 auto 14px;border:0;border-radius:0}
+@media(max-width:600px){img.gift-dialog-monogram{width:56px;margin-bottom:10px}}
+
+/* Ícones: traço fino e uniforme no lugar dos caracteres de fonte */
+.detail-icon svg{width:26px;height:26px;display:block}
+.rsvp-choice-icon svg{width:22px;height:22px;display:block}
+.payment-icon svg{width:24px;height:24px;display:block;margin:0 auto}
+.file-icon svg{width:20px;height:20px;display:block}
+
+/* Barra fixa do celular desativada: o botão Presentear agora fica junto dos botões principais do topo */
+@media (max-width:760px){
+  .mobile-fixed-actions{display:none!important}
+  body{padding-bottom:env(safe-area-inset-bottom)}
+}
+
+/* Música do casal (abertura) */
+.hero-music{max-width:420px;width:100%;margin:22px auto 0;}
+.hero-music-label{font:600 11px 'DM Sans',Arial,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#991153;text-align:center;margin:0 0 10px;}
+.hero-music iframe{display:block;width:100%;}
