@@ -49,7 +49,7 @@
           <p class="hero-intro">E o nosso maior presente é poder celebrar esse dia pertinho de quem amamos.</p>
           <div class="hero-buttons"><a href="#confirmacao" class="btn btn-dark">Confirmar presença <span aria-hidden="true"><svg class="ico" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-arrow-ext"/></svg></span></a><a href="#mural" class="btn btn-ghost">Deixe uma lembrança <span aria-hidden="true"><svg class="ico" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-arrow-ext"/></svg></span></a><a href="#presentes" class="btn btn-ghost">Presentear <svg class="ico" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-heart"/></svg></a></div>
           <a class="calendar-link" href="casamento.ics" download="casamento-daisy-e-vinicius.ics"><svg class="ico" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-heart"/></svg> Adicionar ao calendário</a><div class="hero-date"><span class="date-rule"></span><span id="hero-data">23 DE MAIO DE 2027</span><span class="date-rule"></span></div><p class="hero-times"><span>Entrada dos convidados <strong id="hero-entry">10h</strong></span><span class="hero-times-separator" aria-hidden="true"><svg class="ico ico-spark" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-spark"/></svg></span><span>Cerimônia <strong id="hero-ceremony">11h</strong></span></p>
-          <div class="hero-music" aria-label="Música do casal"><p class="hero-music-label">Nossa música · toque para ouvir</p><iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/4PxTFojApbNeeIwiEEx2QX?utm_source=generator" width="100%" height="152" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy" title="Nossa música no Spotify"></iframe></div>
+          <div class="hero-music" aria-label="Música do casal"><p class="hero-music-label">Nossa música · toque para ouvir</p><div id="spotify-embed"></div></div>
         </div>
         <div class="hero-art" aria-label="Ilustração botânica e monograma dos noivos">
           <div class="art-border"><img src="assets/botanico.svg" alt="Ilustração delicada de flores e folhagens em aquarela" /></div>
@@ -288,5 +288,22 @@
   </dialog>
   <dialog id="image-dialog" class="image-dialog"><button type="button" id="close-image" aria-label="Fechar foto">×</button><img id="dialog-image" alt="Foto compartilhada no casamento" /></dialog>
 <script>window.addEventListener("DOMContentLoaded",()=>{if(new URLSearchParams(location.search).has("pagamento")){const p=new URLSearchParams(location.search).get("pagamento");const message=p==="retorno"?"Obrigado pelo carinho! Confira o pagamento no Mercado Pago; a confirmação depende da aprovação.":"Você pode consultar a situação do pagamento diretamente no Mercado Pago.";document.getElementById("toast").textContent=message;document.getElementById("toast").classList.add("show");setTimeout(()=>document.getElementById("toast").classList.remove("show"),9000)}})</script>
+<script>
+(function(){
+  var controller=null, started=false, gestured=false;
+  function start(){ if(started||!controller) return; started=true; try{ controller.play(); }catch(e){} }
+  window.onSpotifyIframeApiReady=function(IFrameAPI){
+    var el=document.getElementById('spotify-embed');
+    if(!el) return;
+    IFrameAPI.createController(el,{uri:'spotify:track:4PxTFojApbNeeIwiEEx2QX',width:'100%',height:152},function(c){
+      controller=c; if(gestured) start();
+    });
+  };
+  var evs=['pointerdown','touchstart','keydown'];
+  function onGesture(){ gestured=true; start(); evs.forEach(function(t){ document.removeEventListener(t,onGesture,true); }); }
+  evs.forEach(function(t){ document.addEventListener(t,onGesture,{capture:true,passive:true}); });
+  var s=document.createElement('script'); s.src='https://open.spotify.com/embed/iframe-api/v1'; s.async=true; document.body.appendChild(s);
+})();
+</script>
 </body>
 </html>
