@@ -102,8 +102,8 @@ img.gift-dialog-monogram{display:block;width:72px;height:auto;margin:0 auto 14px
 .payment-icon svg{width:24px;height:24px;display:block;margin:0 auto}
 .file-icon svg{width:20px;height:20px;display:block}
 
-/* Barra fixa no celular: sobe para ficar acima do selo "Powered by Netlify" */
+/* Barra fixa do celular desativada: o botão Presentear agora fica junto dos botões principais do topo */
 @media (max-width:760px){
-  .mobile-fixed-actions{bottom:74px;left:12px;right:12px;border:1px solid #eed7df;border-radius:14px;box-shadow:0 8px 24px #56213c24;padding:10px 12px}
-  body{padding-bottom:calc(150px + env(safe-area-inset-bottom))}
+  .mobile-fixed-actions{display:none!important}
+  body{padding-bottom:env(safe-area-inset-bottom)}
 }
