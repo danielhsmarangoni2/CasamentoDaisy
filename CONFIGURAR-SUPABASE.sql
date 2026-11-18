@@ -35,8 +35,8 @@ with check (aprovado = false and char_length(btrim(nome)) between 2 and 70
 -- Bucket publico: imagens so serao listadas no site quando o POST for aprovado.
 -- Aviso: quem tiver o link direto de um arquivo publico pode abri-lo, mesmo antes da aprovacao.
 insert into storage.buckets (id, name, public, file_size_limit, allowed_mime_types)
-values ('casamento-fotos','casamento-fotos',true,4194304,ARRAY['image/jpeg'])
-on conflict (id) do update set public=true, file_size_limit=4194304, allowed_mime_types=ARRAY['image/jpeg'];
+values ('casamento-fotos','casamento-fotos',true,9437184,ARRAY['image/jpeg'])
+on conflict (id) do update set public=true, file_size_limit=9437184, allowed_mime_types=ARRAY['image/jpeg'];
 
 drop policy if exists "Convidados podem enviar imagens para pasta" on storage.objects;
 create policy "Convidados podem enviar imagens para pasta"

@@ -36,18 +36,3 @@
   [headers.values]
     X-Robots-Tag = "noindex, nofollow"
 
-[[headers]]
-  for = "/PREVIA-ACESSO.html"
-  [headers.values]
-    X-Robots-Tag = "noindex, nofollow"
-
-[[headers]]
-  for = "/PREVIA-CINEMATOGRAFICA-OFFLINE.html"
-  [headers.values]
-    X-Robots-Tag = "noindex, nofollow"
-
-[[headers]]
-  for = "/PREVIA-ORQUIDEAS-OFFLINE.html"
-  [headers.values]
-    X-Robots-Tag = "noindex, nofollow"
-

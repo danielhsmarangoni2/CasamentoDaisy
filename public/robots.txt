@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+Disallow: /admin.html
+Disallow: /admin-demo.html
+Disallow: /convite-demo.html
+Disallow: /cartao-mural.html
+Disallow: /.netlify/
+
+Sitemap: https://casamentodaisy.netlify.app/sitemap.xml

@@ -1,10 +1,11 @@
-import {db,json,alertWhatsApp,captchaValid} from './_shared.mjs';
+import {db,json,alertWhatsApp,captchaValid,limitarTentativa} from './_shared.mjs';
 import {validInviteToken,inviteHash} from './invite.mjs';
 export default async request=>{
  if(request.method!=='POST')return json({error:'Método não permitido'},405);
  try{
   const p=await request.json();
   if(!validInviteToken(p.token))return json({error:'Abra o link individual do seu convite.'},403);
+ if(!await limitarTentativa('rsvp',request,30,600))return json({error:'Muitas tentativas em pouco tempo. Aguarde alguns minutos.'},429);
   if(p.website||!await captchaValid(p.captchaToken,request))return json({error:'Verificação inválida.'},400);
   if(!['sim','nao'].includes(p.resposta)||!Array.isArray(p.ids)||p.ids.length>12||
       !p.ids.every(x=>typeof x==='string'&&/^[a-f0-9-]{36}$/i.test(x)))

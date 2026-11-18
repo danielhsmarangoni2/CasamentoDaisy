@@ -26,7 +26,11 @@ function background(ctx,logo){
  ctx.fillStyle=pink;font(ctx,30);ctx.textAlign='center';ctx.fillText('D  V',380,108);
  ctx.font='20px Georgia';ctx.fillText('♥',380,153);
 }
-function loadLogo(){return new Promise(res=>{const i=new Image();i.onload=()=>res(i);i.onerror=()=>res(null);i.src='assets/orquideas-dv.png';});}
+let logoPromise=null;
+function loadLogo(){
+ logoPromise ||= new Promise(res=>{const i=new Image();i.onload=()=>res(i);i.onerror=()=>{logoPromise=null;res(null);};i.src='assets/orquideas-dv.webp';});
+ return logoPromise;
+}
 function qrAsImage(svg){
  return new Promise((resolve,reject)=>{
   if(!svg)return reject(new Error('QR Code não disponível.'));

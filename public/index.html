@@ -8,11 +8,18 @@
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Daisy e Vinícius | Casamento" />
   <meta property="og:description" content="Venha celebrar o amor conosco. Informações, presença e memórias em um só lugar." />
-  <meta property="og:url" content="https://daisyevinicius.com.br/" />
-  <meta property="og:image" content="https://daisyevinicius.com.br/assets/orquideas-dv.png" />
-  <meta name="twitter:card" content="summary" />
-  <link rel="canonical" href="https://daisyevinicius.com.br/" />
-  <link rel="icon" type="image/png" href="assets/orquideas-dv.png" />
+  <meta property="og:url" content="https://casamentodaisy.netlify.app/" />
+  <meta property="og:image" content="https://casamentodaisy.netlify.app/assets/compartilhar-og.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Daisy e Vinícius, 23 de maio de 2027" />
+  <meta property="og:locale" content="pt_BR" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://casamentodaisy.netlify.app/assets/compartilhar-og.png" />
+  <link rel="canonical" href="https://casamentodaisy.netlify.app/" />
+  <link rel="icon" type="image/webp" href="assets/orquideas-dv.webp" />
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
+  <link rel="manifest" href="manifest.webmanifest" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet" />
@@ -30,7 +37,7 @@
   <div class="announce">NOSSA HISTÓRIA MAIS BONITA ESTÁ COMEÇANDO <span><svg class="ico ico-spark" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-spark"/></svg></span></div>
   <header class="site-header" id="topo">
     <div class="container nav-wrap">
-      <a class="brand" href="#inicio" aria-label="Voltar ao início"><img class="brand-img" src="assets/orquideas-dv.png" alt="Logo Daisy e Vinícius: D&amp;V com orquídeas" width="506" height="399" /></a>
+      <a class="brand" href="#inicio" aria-label="Voltar ao início"><img class="brand-img" src="assets/orquideas-dv.webp" alt="Logo Daisy e Vinícius: D&amp;V com orquídeas" width="506" height="399" /></a>
       <button type="button" class="menu-toggle" id="menu-toggle" aria-expanded="false" aria-controls="nav-list" aria-label="Abrir menu"><span></span><span></span><span></span></button>
       <nav id="nav-list" class="site-nav" aria-label="Navegação principal">
         <a href="#historia">Nossa história</a><a href="#celebracao">O grande dia</a><a href="#trajes">Trajes</a><a href="#mural">Mural</a><a href="#presentes">Presentes</a><a href="#confirmacao" class="nav-highlight">Confirmar presença</a>
@@ -49,11 +56,11 @@
           <p class="hero-intro">E o nosso maior presente é poder celebrar esse dia pertinho de quem amamos.</p>
           <div class="hero-buttons"><a href="#confirmacao" class="btn btn-dark">Confirmar presença <span aria-hidden="true"><svg class="ico" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-arrow-ext"/></svg></span></a><a href="#mural" class="btn btn-ghost">Deixe uma lembrança <span aria-hidden="true"><svg class="ico" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-arrow-ext"/></svg></span></a><a href="#presentes" class="btn btn-ghost">Presentear <svg class="ico" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-heart"/></svg></a></div>
           <a class="calendar-link" href="casamento.ics" download="casamento-daisy-e-vinicius.ics"><svg class="ico" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-heart"/></svg> Adicionar ao calendário</a><div class="hero-date"><span class="date-rule"></span><span id="hero-data">23 DE MAIO DE 2027</span><span class="date-rule"></span></div><p class="hero-times"><span>Entrada dos convidados <strong id="hero-entry">10h</strong></span><span class="hero-times-separator" aria-hidden="true"><svg class="ico ico-spark" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-spark"/></svg></span><span>Cerimônia <strong id="hero-ceremony">11h</strong></span></p>
-          <div class="hero-music" aria-label="Música do casal"><p class="hero-music-label">Nossa música · toque para ouvir</p><div id="spotify-embed"></div></div>
+          <div class="hero-music" aria-label="Música do casal"><p class="hero-music-label">Nossa música · toque para ouvir</p><audio id="musica-casal" preload="metadata" loop controls><source src="assets/musica-casal.m4a" type="audio/mp4"></audio></audio></div>
         </div>
         <div class="hero-art" aria-label="Ilustração botânica e monograma dos noivos">
           <div class="art-border"><img src="assets/botanico.svg" alt="Ilustração delicada de flores e folhagens em aquarela" /></div>
-          <div class="art-seal"><span class="art-seal-small">O CASAMENTO DE</span><strong id="monograma"><img class="seal-logo" src="assets/orquideas-dv.png" alt="D&amp;V" width="506" height="399" /></strong><span class="art-seal-small">PARA SEMPRE</span></div>
+          <div class="art-seal"><span class="art-seal-small">O CASAMENTO DE</span><strong id="monograma"><img class="seal-logo" src="assets/orquideas-dv.webp" alt="D&amp;V" width="506" height="399" /></strong><span class="art-seal-small">PARA SEMPRE</span></div>
           <span class="hero-art-caption">um amor para a vida inteira</span>
         </div>
       </div>
@@ -64,7 +71,7 @@
 
     <section id="historia" class="section history-section">
       <div class="container history-grid">
-        <div class="history-graphic"><div class="history-frame"><img class="couple-photo" src="assets/casal.jpg" alt="Daisy e Vinícius abraçados" width="587" height="1042" loading="lazy" /></div><span class="history-stamp">o amor cresce aqui<br /><b><svg class="ico ico-spark" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-spark"/></svg></b></span></div>
+        <div class="history-graphic"><div class="history-frame"><img class="couple-photo" src="assets/casal.webp" alt="Daisy e Vinícius abraçados" width="587" height="1042" loading="lazy" /></div><span class="history-stamp">o amor cresce aqui<br /><b><svg class="ico ico-spark" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-spark"/></svg></b></span></div>
         <div class="history-content"><p class="eyebrow">CAPÍTULO 01 · A NOSSA HISTÓRIA</p><h2>De um encontro,<br /><i>nasceu o para sempre.</i></h2><span class="ornament"><svg class="ico ico-spark" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-spark"/></svg> ───── <svg class="ico ico-spark" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-spark"/></svg></span><p>Dizem que o amor acontece quando menos esperamos… e o nosso começou com uma ajudinha da Joyce, que resolveu bancar o cupido e disse que plantaria uma sementinha em mim para que eu finalmente o notasse. 🌱❤️</p><p>Na época, já conversávamos, mas nenhum dos dois tinha qualquer intenção! 😂 Mal sabíamos que aquela sementinha iria florescer e mudar completamente nossos planos!</p><p>Nosso primeiro encontro foi no cinema do Shopping SP Market. Um daqueles momentos que, sem percebermos, se tornam o começo de algo muito especial. Teve até um docinho de presente, levado pelo Vinícius antes de as coisas ficarem sérias: um potinho de doce de leite zero lactose que, segundo ele, era sem açúcar! 😂 E no dia 28 de junho de 2025, aconteceu nosso primeiro beijo, em frente ao GoodStorage, ao lado da estação Brooklin. Quem diria que até um depósito entraria para a nossa história de amor? 😂❤️</p><p>Aos poucos, as conversas ganharam mais significado, a presença um do outro se tornou cada vez mais importante e o amor foi crescendo da forma mais bonita: através do cuidado, do carinho e da escolha diária de estarmos juntos.</p><p>Entre tantos momentos especiais, nossa viagem para Paraty ganhou um lugar no coração. Com direito a passeio de lancha, paisagens lindas e muitas lembranças, descobrimos que mais gostoso do que conhecer novos lugares é ter a pessoa certa ao lado para compartilhar cada aventura. ❤️</p><p>Claro que nossa história também teve seus desafios e aqueles famosos pitacos de quem nem foi convidado a participar do roteiro! 😂 Mas cada situação nos ensinou que o mais importante é estarmos do mesmo lado, fortalecendo nossa parceria e protegendo aquilo que construímos juntos.</p><p>E então chegou o momento de falar sobre casamento! 💍</p><p>Não teve pedido cinematográfico, joelho no chão ou pétalas de rosas. Teve algo muito mais a nossa cara: uma conversa sincera, sonhos compartilhados e a certeza de que queríamos construir uma vida juntos.</p><p>O plano inicial era casar em 2029, junto com a entrega do nosso apartamento. Mas aí veio 2028, depois novembro de 2027 e, finalmente, MAIO DE 2027! 😂 Pelo visto, o amor tinha pressa e a paciência pediu demissão!</p><p>E foi assim, entre planos, mudanças de datas e muitos sonhos, que começamos a imaginar nossa vida a dois: as chaves do nosso apartamento, cada cantinho da nossa casa, novas viagens, nossos futuros filhos e a família linda que queremos construir.</p><p>Nossa história não começou com amor à primeira vista, não teve um pedido tradicional e definitivamente não seguiu o calendário original. Mas ela tem o que mais importa: amor, cuidado, cumplicidade e dois corações que escolheram caminhar juntos.</p><p>E pensar que tudo começou com a Joyce plantando uma sementinha… Quem diria que ela estava plantando um casamento inteiro! 🌱💍❤️</p><p class="history-note">Agora estamos contando os dias para o nosso tão sonhado SIM!</p><p class="history-note">E prometemos não antecipar mais a data… ou pelo menos vamos tentar! 😂❤️</p></div>
       </div>
     </section>
@@ -74,6 +81,7 @@
     <section id="celebracao" class="section celebration-section"><div class="container"><div class="section-heading"><p class="eyebrow">CAPÍTULO 02 · A CELEBRAÇÃO</p><h2>Onde tudo vai <i>acontecer</i></h2><p>Preparamos cada detalhe com carinho para viver esse momento com vocês.</p></div><div class="details-grid">
       <article class="detail-card"><div class="detail-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3.5" y="5" width="17" height="15.5" rx="2"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg></div><span class="detail-overline">QUANDO</span><h3 id="detail-date">23 de maio de 2027</h3><div class="event-schedule" id="detail-time" aria-label="Horários do casamento"><div><strong id="detail-entry">10h</strong><span>Entrada dos convidados</span></div><div><strong id="detail-ceremony">11h</strong><span>Início da cerimônia</span></div></div><a class="detail-link" href="casamento.ics" download="casamento-daisy-e-vinicius.ics">Adicionar à agenda <svg class="ico" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-heart"/></svg></a></article>
       <article class="detail-card featured"><div class="detail-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 21s-6.5-5.6-6.5-11a6.5 6.5 0 0 1 13 0c0 5.4-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.4"/></svg></div><span class="detail-overline">ONDE</span><h3 id="detail-location">Mansão Victória</h3><p id="detail-address">Rua Orfanato, 440 - Vila Prudente, São Paulo - SP, 03131-010</p><a id="map-link" class="detail-link" href="https://www.google.com/maps/dir/?api=1&destination=Mans%C3%A3o%20Vict%C3%B3ria%2C%20Rua%20Orfanato%2C%20440%2C%20Vila%20Prudente%2C%20S%C3%A3o%20Paulo%2C%20SP%2C%2003131-010" target="_blank" rel="noopener noreferrer">Como chegar pelo Google Maps <svg class="ico" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-arrow-ext"/></svg></a><a class="detail-link" href="https://waze.com/ul?q=Mans%C3%A3o%20Vict%C3%B3ria%2C%20Rua%20Orfanato%2C%20440%2C%20Vila%20Prudente%2C%20S%C3%A3o%20Paulo%2C%20SP&amp;navigate=yes" target="_blank" rel="noopener noreferrer">Como chegar pelo Waze <svg class="ico" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-arrow-ext"/></svg></a></article>
+      <div class="map-embed-wrap"><iframe class="map-embed" title="Mapa: Mansão Victória, Rua Orfanato, 440, Vila Prudente, São Paulo" src="https://www.google.com/maps?q=Mans%C3%A3o%20Vict%C3%B3ria%2C%20Rua%20Orfanato%2C%20440%2C%20Vila%20Prudente%2C%20S%C3%A3o%20Paulo%2C%20SP%2C%2003131-010&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" style="width:100%;height:280px;border:0;border-radius:14px"></iframe></div>
       <article class="detail-card"><div class="detail-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 20s-7.5-4.6-7.5-10.1A4.2 4.2 0 0 1 12 7.4a4.2 4.2 0 0 1 7.5 2.5C19.5 15.4 12 20 12 20z"/></svg></div><span class="detail-overline">O QUE ESPERAR</span><h3>Um dia inesquecível</h3><p>Muito amor, abraços apertados e memórias que vão durar para sempre.</p></article>
     </div></div></section>
 
@@ -113,21 +121,19 @@
     <section id="mural" class="section mural-section"><div class="container"><div class="section-heading"><p class="eyebrow">CAPÍTULO 03 · MEMÓRIAS COMPARTILHADAS</p><h2>Nosso mural <i>de carinho</i></h2><p>Poste uma foto ou deixe uma mensagem para os noivos. Seus registros farão parte da nossa história!</p></div>
       <div class="mural-layout"><div class="upload-panel"><div class="upload-heading"><span class="circle-mark"><svg class="ico" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-heart"/></svg></span><div><h3>Deixe seu carinho</h3><p>Um recado, uma foto ou os dois.</p></div></div>
         <form id="mural-form" novalidate><label for="guest-name">Seu nome <span>*</span></label><input id="guest-name" type="text" name="nome" maxlength="70" minlength="2" autocomplete="name" placeholder="Como podemos chamar você?" required />
-          <label for="guest-message">Sua mensagem <small>(opcional se enviar foto)</small></label><textarea id="guest-message" name="mensagem" rows="4" maxlength="700" placeholder="Escreva algo especial para Daisy e Vinícius..."></textarea><div class="letter-count"><span id="letter-count">0</span>/700</div>
-          <label for="guest-photo">Sua foto <small>(opcional)</small></label><label class="file-input" for="guest-photo"><span class="file-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 16V5M7.5 9.5L12 5l4.5 4.5M5 19h14"/></svg></span><span id="file-label"><b>Clique para escolher uma foto</b><small>JPG, PNG ou imagem do celular • até 15 MB antes da otimização</small></span></label><input id="guest-photo" class="visually-hidden" name="foto" type="file" accept="image/*" />
-          <div id="photo-preview" class="photo-preview hidden"><img id="preview-image" alt="Prévia da foto selecionada" /><button type="button" id="remove-photo" aria-label="Remover foto">×</button></div>
-          <label class="checkline"><input type="checkbox" id="guest-consent" required /><span>Autorizo a publicação da minha mensagem e/ou foto neste site, após aprovação dos noivos.</span></label>
+          <label for="guest-message">Sua mensagem <span>*</span></label><textarea id="guest-message" name="mensagem" rows="4" maxlength="700" placeholder="Escreva algo especial para Daisy e Vinícius..."></textarea><div class="letter-count"><span id="letter-count">0</span>/700</div>
+          <label class="checkline"><input type="checkbox" id="guest-consent" required /><span>Autorizo a publicação da minha mensagem neste site, após aprovação dos noivos.</span></label>
           <div class="honeypot" aria-hidden="true"><label for="guest-site">Não preencha este campo</label><input id="guest-site" autocomplete="off" tabindex="-1" /></div>
-          <div id="mural-antibot" class="antibot-slot" aria-label="Verificação anti-robô para enviar fotos"></div><button class="btn btn-dark btn-full" id="submit-post" type="submit">Enviar minha lembrança <span><svg class="ico" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-arrow-ext"/></svg></span></button><p class="form-note" id="mural-info">Os posts passam por aprovação antes de aparecer no site.</p>
+          <div id="mural-antibot" class="antibot-slot" aria-label="Verificação anti-robô"></div><button class="btn btn-dark btn-full" id="submit-post" type="submit">Enviar minha lembrança <span><svg class="ico" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-arrow-ext"/></svg></span></button><p class="form-note" id="mural-info">Os posts passam por aprovação antes de aparecer no site.</p>
           <p id="mural-form-status" class="form-status" role="status" aria-live="polite"></p></form>
       </div>
-      <div class="wall-panel"><div class="wall-top"><h3>Com amor, de vocês</h3><span class="wall-count" id="wall-count">0 lembranças</span></div><p class="mural-action-hint">Fotos e mensagens aparecem aqui depois da aprovação dos noivos. <a href="cartao-mural.html" target="_blank" rel="noopener">Ver QR Code do mural <svg class="ico" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-arrow-ext"/></svg></a></p><div class="wall-filters" role="group" aria-label="Filtrar lembranças"><button type="button" class="filter active" data-filter="todos" aria-pressed="true">Todos</button><button type="button" class="filter" data-filter="fotos" aria-pressed="false">Fotos</button><button type="button" class="filter" data-filter="recados" aria-pressed="false">Recados</button></div><div id="wall-posts" class="wall-posts" aria-live="polite"><div class="empty-wall"><span class="empty-icon"><svg class="ico ico-spark" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-spark"/></svg></span><h4>As primeiras lembranças começam aqui.</h4><p>Quando o mural estiver conectado, as mensagens aprovadas aparecerão neste espaço.</p></div></div></div></div>
+      <div class="wall-panel"><div class="wall-top"><h3>Com amor, de vocês</h3><span class="wall-count" id="wall-count">0 lembranças</span></div><p class="mural-action-hint">Fotos e mensagens aparecem aqui depois da aprovação dos noivos. <a href="cartao-mural.html" target="_blank" rel="noopener">Ver QR Code do mural <svg class="ico" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-arrow-ext"/></svg></a></p><div class="wall-filters" role="group" aria-label="Filtrar lembranças"><button type="button" class="filter active" data-filter="todos" aria-pressed="true">Todos</button><button type="button" class="filter" data-filter="fotos" aria-pressed="false">Fotos</button><button type="button" class="filter" data-filter="recados" aria-pressed="false">Recados</button></div><div id="wall-posts" class="wall-posts" aria-live="polite"><div class="empty-wall"><span class="empty-icon"><svg class="ico ico-spark" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-spark"/></svg></span><h4>As primeiras lembranças começam aqui.</h4><p>Deixe uma foto ou recado para os noivos. Eles aparecerão aqui após aprovação.</p></div></div></div></div>
     </div></section>
 
     <section id="presentes" class="section presents-section" aria-labelledby="presents-title">
       <div class="container">
         <div class="contributions-heading">
-          <img class="monogram-mini-img" src="assets/orquideas-dv.png" alt="" width="506" height="399" aria-hidden="true" />
+          <img class="monogram-mini-img" src="assets/orquideas-dv.webp" alt="" width="506" height="399" aria-hidden="true" />
           <p class="eyebrow">CAPÍTULO 04 · NOSSO CANTINHO DE CARINHO</p>
           <h2 id="presents-title">Presentes <i>com amor</i></h2>
           <p>A sua presença é o nosso maior presente. Mas, se desejar contribuir com nossos sonhos, escolha uma das opções abaixo ou ofereça o valor que estiver em seu coração.</p>
@@ -192,7 +198,7 @@
       <div class="container rsvp-box">
         <img src="assets/ramo.svg" alt="" class="rsvp-branch left" />
         <img src="assets/ramo.svg" alt="" class="rsvp-branch right" />
-        <img class="rsvp-monogram" src="assets/orquideas-dv.png" alt="" width="506" height="399" aria-hidden="true" />
+        <img class="rsvp-monogram" src="assets/orquideas-dv.webp" alt="" width="506" height="399" aria-hidden="true" />
         <p class="eyebrow">VOCÊ FAZ PARTE DA NOSSA HISTÓRIA</p>
         <h2 id="rsvp-heading">Confirmação de <i>presença</i></h2>
         <p>Nosso grande dia ficará ainda mais especial com você! Conte para nós se poderá estar presente no dia <strong>23 de maio de 2027</strong>, na Mansão Victória.</p>
@@ -230,13 +236,13 @@
       </div>
     </section>
   </main>
-  <footer class="footer"><div class="container"><a href="#inicio" class="footer-monogram"><img src="assets/orquideas-dv.png" alt="Logo Daisy e Vinícius: D&amp;V com orquídeas" width="506" height="399" class="footer-logo" /></a><p>Feito com amor para celebrar o nosso para sempre.</p><p class="footer-small">Daisy e Vinícius · <span id="footer-date">23 de maio de 2027</span></p><a class="to-top" href="#inicio">Voltar ao topo <svg class="ico" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-arrow-up"/></svg></a></div></footer>
+  <footer class="footer"><div class="container"><a href="#inicio" class="footer-monogram"><img src="assets/orquideas-dv.webp" alt="Logo Daisy e Vinícius: D&amp;V com orquídeas" width="506" height="399" class="footer-logo" /></a><p>Feito com amor para celebrar o nosso para sempre.</p><p class="footer-small">Daisy e Vinícius · <span id="footer-date">23 de maio de 2027</span></p><a class="to-top" href="#inicio">Voltar ao topo <svg class="ico" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-arrow-up"/></svg></a></div></footer>
   <div id="toast" class="toast" role="status" aria-live="polite"></div>
   <div class="mobile-fixed-actions" aria-label="Atalhos do casamento"><a href="#presentes"><svg class="ico" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-heart"/></svg> Presentear</a><a href="#confirmacao"><svg class="ico" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-check"/></svg> Confirmar presença</a></div>
   <dialog id="gift-dialog" class="gift-dialog" aria-labelledby="gift-dialog-title">
     <div class="gift-dialog-frame">
       <button type="button" id="close-gift" class="gift-dialog-close" aria-label="Fechar opções de presente">×</button>
-      <img class="gift-dialog-monogram" src="assets/orquideas-dv.png" alt="" width="506" height="399" aria-hidden="true" />
+      <img class="gift-dialog-monogram" src="assets/orquideas-dv.webp" alt="" width="506" height="399" aria-hidden="true" />
       <p class="gift-dialog-overline">FORMA DE PRESENTE</p>
       <h2 id="gift-dialog-title">Como deseja presentear?</h2>
       <div class="gift-selected-box"><span>SEU PRESENTE</span><p id="gift-dialog-description" class="gift-dialog-description"></p></div>
@@ -290,20 +296,22 @@
 <script>window.addEventListener("DOMContentLoaded",()=>{if(new URLSearchParams(location.search).has("pagamento")){const p=new URLSearchParams(location.search).get("pagamento");const message=p==="retorno"?"Obrigado pelo carinho! Confira o pagamento no Mercado Pago; a confirmação depende da aprovação.":"Você pode consultar a situação do pagamento diretamente no Mercado Pago.";document.getElementById("toast").textContent=message;document.getElementById("toast").classList.add("show");setTimeout(()=>document.getElementById("toast").classList.remove("show"),9000)}})</script>
 <script>
 (function(){
-  var controller=null, started=false, gestured=false;
-  function start(){ if(started||!controller) return; started=true; try{ controller.play(); }catch(e){} }
-  window.onSpotifyIframeApiReady=function(IFrameAPI){
-    var el=document.getElementById('spotify-embed');
-    if(!el) return;
-    IFrameAPI.createController(el,{uri:'spotify:track:4PxTFojApbNeeIwiEEx2QX',width:'100%',height:152},function(c){
-      controller=c; if(gestured) start();
-    });
-  };
+  var audio=document.getElementById('musica-casal');
+  if(!audio) return;
+  audio.volume=0.6;
+  var started=false;
+  function start(){
+    if(started) return;
+    started=true;
+    var p=audio.play();
+    if(p&&p.catch) p.catch(function(){ started=false; });
+    evs.forEach(function(t){ document.removeEventListener(t,start,true); });
+  }
   var evs=['pointerdown','touchstart','keydown'];
-  function onGesture(){ gestured=true; start(); evs.forEach(function(t){ document.removeEventListener(t,onGesture,true); }); }
-  evs.forEach(function(t){ document.addEventListener(t,onGesture,{capture:true,passive:true}); });
-  var s=document.createElement('script'); s.src='https://open.spotify.com/embed/iframe-api/v1'; s.async=true; document.body.appendChild(s);
+  evs.forEach(function(t){ document.addEventListener(t,start,{capture:true,passive:true}); });
 })();
 </script>
+  <button id="texto-grande" class="texto-grande-btn" type="button" aria-pressed="false" aria-label="Aumentar o tamanho do texto">Aa</button>
+  <script>(function(){const b=document.getElementById('texto-grande');let on=false;try{on=localStorage.getItem('texto-grande')==='1';}catch(e){}function aplicar(v){document.documentElement.classList.toggle('texto-grande',v);b.setAttribute('aria-pressed',String(v));b.title=v?'Texto normal':'Texto maior';}aplicar(on);b.addEventListener('click',function(){on=!on;aplicar(on);try{localStorage.setItem('texto-grande',on?'1':'0');}catch(e){}});})();</script>
 </body>
 </html>

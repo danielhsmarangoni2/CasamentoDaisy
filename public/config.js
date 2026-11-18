@@ -12,7 +12,8 @@ window.WEDDING_CONFIG = {
   mapaUrl: 'https://www.google.com/maps/dir/?api=1&destination=Mans%C3%A3o%20Vict%C3%B3ria%2C%20Rua%20Orfanato%2C%20440%2C%20Vila%20Prudente%2C%20S%C3%A3o%20Paulo%2C%20SP%2C%2003131-010',  // Abre rota no Google Maps
   convitesAtivos: true,    // RSVP somente por link personalizado e seguro, requer migração V4.
   notificacoesAtivas: false, // Troque para true DEPOIS de configurar Netlify Functions, Supabase, Mercado Pago e Meta.
-  turnstileSiteKey: '', // Opcional: chave pública do Cloudflare Turnstile (se usar proteção anti-bot).
+  turnstileSiteKey: '0x4AAAAAAF7-aUPR_w5D5FQq', // Chave pública do Cloudflare Turnstile (widget 'Casamento Daisy - fotos').
+  prazoConfirmacao: '', // Data limite para confirmar presença, AAAA-MM-DD. Vazio = não mostra o prazo.
   whatsapp: '',            // So numeros com DDI e DDD. Exemplo: '5511999999999'
   // Pix agora é gerenciado exclusivamente no painel /admin.html.
   // Cole aqui os enderecos REAIS dos links criados na sua conta Mercado Pago.

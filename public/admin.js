@@ -48,7 +48,52 @@
   $('#settings-pix-holder').value=settings.pixTitular||'';
   $('#settings-pix-city').value=settings.pixCidade||'';
  }
- function settingsFeedback(msg,isError=false){const el=$('#settings-status');el.textContent=msg;el.style.color=isError?'#ae284b':'#287247';}
+ async function saveManualGift(event){
+  event.preventDefault();const btn=$('#mg-save'),status=$('#mg-status');
+  const payload={nome:$('#mg-nome').value.trim(),valor:Number($('#mg-valor').value),data:$('#mg-data').value,observacao:$('#mg-obs').value.trim()};
+  const setMsg=(m,err=false)=>{status.textContent=m;status.style.color=err?'#ae284b':'#287247';};
+  if(demo){
+   data.gifts.push({id:'demo-'+Date.now(),nome:payload.nome,valor:payload.valor,titulo:'Pix direto (registro manual)',status:'aprovado',taxa_mp:0,liquido_mp:payload.valor,meio_pagamento:'pix_manual',criado_em:payload.data+'T12:00:00-03:00',aprovado_em:payload.data+'T12:00:00-03:00',manual:true});
+   draw();event.target.reset();setMsg('Prévia: registro adicionado só nesta tela.');return;
+  }
+  btn.disabled=true;setMsg('Registrando...');
+  try{ await callAdmin('POST',{action:'presente_manual_criar',...payload}); event.target.reset(); await refresh(); setMsg('Pix registrado e incluído no total.'); }
+  catch(e){setMsg(e.message||'Erro ao registrar.',true);}finally{btn.disabled=false;}
+}
+async function deleteManualGift(id){
+  if(!confirm('Excluir este Pix registrado manualmente? Ele deixa de contar no total.'))return;
+  if(demo){data.gifts=data.gifts.filter(g=>g.id!==id);draw();return;}
+  try{ await callAdmin('POST',{action:'presente_manual_excluir',id}); await refresh(); }
+  catch(e){setInfo(e.message,true);}
+}
+async function removeCredenciaisMP(){
+  const status=$('#mp-status');const setMsg=(m,err=false)=>{status.textContent=m;status.style.color=err?'#ae284b':'#287247';};
+  if(!confirm('Remover do painel as credenciais do Mercado Pago? O site passa a usar só as variáveis do Netlify, se existirem.'))return;
+  if(demo){setMsg('Prévia: nada foi removido.');return;}
+  try{ const result=await callAdmin('POST',{action:'remover_credenciais_mp'}); data.pagamento=result.pagamento; drawPagamento(); setMsg('Credenciais removidas do painel.'); }
+  catch(e){setMsg(e.message||'Erro ao remover.',true);}
+}
+function drawPagamento(){
+ const el=$('#mp-summary');if(!el)return;const p=data.pagamento||{};
+ if(!p.origem){el.textContent=demo?'Prévia: nada é salvo nesta tela.':'Status indisponível.';return;}
+ const txt={painel:'Configurado pelo painel',netlify:'Configurado pelas variáveis do Netlify',nenhuma:'Não configurado'}[p.origem]||'Status desconhecido';
+ const alertas=[p.tokenFinal?`token termina em ${p.tokenFinal}`:'',p.webhookConfigurado?'':'webhook pendente',p.chaveCriptografiaConfigurada?'':'falta SEGREDOS_ENCRYPTION_KEY no Netlify'].filter(Boolean);
+ el.textContent=txt+(alertas.length?' · '+alertas.join(' · '):' · webhook configurado')+'.';
+}
+async function saveCredenciaisMP(event){
+ event.preventDefault();const btn=$('#mp-save'),status=$('#mp-status');
+ const token=$('#mp-token').value.trim(),webhook=$('#mp-webhook').value.trim();
+ const setMsg=(m,err=false)=>{status.textContent=m;status.style.color=err?'#ae284b':'#287247';};
+ if(!token&&!webhook){setMsg('Preencha o Access Token ou a chave do webhook para atualizar.',true);return;}
+ if(demo){setMsg('Prévia: nada foi salvo.');return;}
+ btn.disabled=true;setMsg('Salvando...');
+ try{
+  const result=await callAdmin('POST',{action:'salvar_credenciais_mp',accessToken:token,webhookSecret:webhook});
+  data.pagamento=result.pagamento;$('#mp-token').value='';$('#mp-webhook').value='';drawPagamento();
+  setMsg('Credenciais salvas. Valem a partir da próxima cobrança.');
+ }catch(e){setMsg(e.message||'Erro ao salvar.',true);}finally{btn.disabled=false;}
+}
+function settingsFeedback(msg,isError=false){const el=$('#settings-status');el.textContent=msg;el.style.color=isError?'#ae284b':'#287247';}
  function normalizePix(s,max){return String(s||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toUpperCase().replace(/[^A-Z0-9 .-]/g,' ').replace(/\s+/g,' ').trim().slice(0,max);}
  async function saveSettings(event){
   event.preventDefault();const btn=$('#settings-save');
@@ -60,8 +105,13 @@
   if(key && !/^[a-f0-9]{8}-[a-f0-9]{4}-[1-8][a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$/.test(key)){
    settingsFeedback('A chave aleatória deve ter o formato UUID válido.',true);return;
   }
-  if(key && (holder.length<2||holder.length>25||city.length<2||city.length>15)){
-   settingsFeedback('Para ativar o Pix, informe nome do titular (2–25) e cidade (2–15).',true);return;
+  if(key){
+   const erros=[];
+   if(holder.length<2) erros.push('o nome do titular precisa de pelo menos 2 letras');
+   if(holder.length>25) erros.push(`o nome do titular tem ${holder.length} caracteres e o máximo é 25 (use só o primeiro nome e um sobrenome)`);
+   if(city.length<2) erros.push('a cidade precisa de pelo menos 2 letras');
+   if(city.length>15) erros.push(`a cidade tem ${city.length} caracteres e o máximo é 15`);
+   if(erros.length){settingsFeedback('Pix não salvo: '+erros.join('; ')+'.',true);return;}
   }
   const candidate={telefone:phone,pixChave:key,pixTitular:key?holder:'',pixCidade:key?city:''};
   btn.disabled=true;settingsFeedback('Salvando...');
@@ -78,7 +128,7 @@
   $('#stat-guests').textContent=String(attendees);$('#stat-rsvp').textContent=String(data.rsvp.length);
   $('#stat-gifts').textContent=brl(paid);$('#stat-pending').textContent=String(pending);
   $('#dashboard-updated').textContent=(demo?'Dados fictícios • ':'')+'Atualizado em '+new Intl.DateTimeFormat('pt-BR',{dateStyle:'short',timeStyle:'short'}).format(new Date());
-  drawRSVP();drawGifts();drawAlbum();drawSecurity();drawInvites();
+  drawRSVP();drawGifts();drawAlbum();drawSecurity();drawInvites();drawPagamento();
  }
  let inviteGenerated=null,inviteInfo=null,cardReady=false;
  function invitationUrl(token){return new URL('convite-interativo.html?convite='+encodeURIComponent(token),location.href).href;}
@@ -97,16 +147,19 @@
  function drawInvites(){
    const tbody=$('#admin-invites-tbody');if(!tbody)return;
    tbody.replaceChildren();
-   for(const inv of data.convites||[]){
+   const termo=($('#search-convites')?.value||'').trim().toLocaleLowerCase('pt-BR');
+   const lista=(data.convites||[]).filter(inv=>!termo||[inv.familia,inv.nome_principal,(inv.pessoas||[]).map(pessoa=>pessoa.nome).join(' ')].join(' ').toLocaleLowerCase('pt-BR').includes(termo));
+   for(const inv of lista){
      const row=document.createElement('tr');
      const cell=(value)=>{const td=document.createElement('td');td.textContent=String(value);row.append(td);return td;};
      cell(`${recipient(inv)} (${inv.familia})`);cell(inv.pessoas.map(p=>p.nome+(p.tipo==='crianca'?' (criança)':'')).join(', '));
      cell(inv.resposta?inv.resposta.resposta==='sim'?`${inv.resposta.adultos} adulto(s), ${inv.resposta.criancas} criança(s)`:'Não comparecerá':'Aguardando');
      cell(inv.ativo?'Ativo':'Cancelado');
      const td=document.createElement('td'),buttons=document.createElement('div');buttons.className='invite-action-buttons';
-     for(const [action,label] of [['rotate','Novo link'],[inv.ativo?'deactivate':'activate',inv.ativo?'Cancelar':'Reativar']]){
+     const acoes=[inv.tem_link?['reveal','Ver link']:['rotate','Gerar link'],...(inv.tem_link?[['rotate','Novo link']]:[]),[inv.ativo?'deactivate':'activate',inv.ativo?'Cancelar':'Reativar']];
+     for(const [action,label] of acoes){
        const btn=document.createElement('button');btn.type='button';btn.textContent=label;
-       btn.addEventListener('click',()=>changeInvite(inv,action));buttons.append(btn);
+       btn.addEventListener('click',()=>action==='reveal'?revealInvite(inv).catch(e=>setInfo(e.message,true)):changeInvite(inv,action));buttons.append(btn);
      }td.append(buttons);row.append(td);tbody.append(row);
    }
    if(!tbody.childNodes.length){const tr=document.createElement('tr'),td=document.createElement('td');td.colSpan=5;td.textContent='Nenhum convite cadastrado.';tr.append(td);tbody.append(tr);}
@@ -164,6 +217,11 @@
      else{const result=await inviteCall('POST',{action,id:inv.id});if(result.token)await showGeneratedInvitation(result.token,inv);await loadInvites();}
      drawInvites();setInfo('Convite atualizado.');
    }catch(e){setInfo(e.message,true);}
+ }
+ async function revealInvite(inv){
+   if(demo){await showGeneratedInvitation('demonstracao',inv);return;}
+   const result=await inviteCall('POST',{action:'reveal',id:inv.id});
+   await showGeneratedInvitation(result.token,inv);
  }
  function printInvitation(){
    if(!inviteGenerated)return;
@@ -261,6 +319,37 @@
   const query=($('#search-rsvp')?.value||'').toLocaleLowerCase('pt-BR');
   const list=data.rsvp.filter(r=>String(r.nome||'').toLocaleLowerCase('pt-BR').includes(query));
   $('#rsvp-tbody').innerHTML=list.map(r=>`<tr><td><strong>${escapeHTML(r.nome)}</strong></td><td><span class="tag ${r.resposta==='sim'?'':'no'}">${r.resposta==='sim'?'Confirmado':'Não vai'}</span></td><td>${Number(r.adultos)||0}</td><td>${Number(r.criancas)||0}</td><td>${escapeHTML(r.acompanhantes)||'—'}</td><td>${escapeHTML(date(r.criado_em))}</td></tr>`).join('')||'<tr><td colspan="6">Nenhuma confirmação encontrada.</td></tr>';
+ drawRSVPChart();
+ }
+ function drawRSVPChart(){
+  const container=$('#rsvp-chart');if(!container)return;
+  const grouped=new Map();
+  for(const r of data.rsvp||[]){
+   if(r.resposta!=='sim')continue;
+   const dt=new Date(r.criado_em);if(!Number.isFinite(dt.getTime()))continue;
+   const day=`${dt.getFullYear()}-${String(dt.getMonth()+1).padStart(2,'0')}-${String(dt.getDate()).padStart(2,'0')}`;
+   grouped.set(day,(grouped.get(day)||0)+1);
+  }
+  const days=[...grouped.entries()].sort((a,b)=>a[0].localeCompare(b[0])).slice(-14);
+  container.replaceChildren();
+  const max=Math.max(1,...days.map(x=>x[1]));
+  for(const [label,total] of days){const bar=document.createElement('div');bar.className='chart-column';
+   const value=document.createElement('span');value.className='chart-amount';value.textContent=String(total);
+   const shape=document.createElement('div');shape.className='chart-bar';shape.style.height=`${Math.max(8,total/max*104)}px`;
+   const day=document.createElement('small');day.textContent=label.slice(8)+'/'+label.slice(5,7);
+   bar.append(value,shape,day);container.append(bar);}
+  if(!days.length)container.textContent='Nenhuma confirmação registrada ainda.';
+ }
+ async function approveAllPending(){
+  const pending=data.album.filter(r=>!r.aprovado);
+  if(!pending.length){setInfo('Não há publicações pendentes.');return;}
+  if(!confirm(`Aprovar ${pending.length} publicação(ões) pendente(s)? Elas aparecerão no site.`))return;
+  setInfo('Aprovando publicações pendentes...');
+  try{
+   if(demo){for(const row of pending)row.aprovado=true;}
+   else{for(const row of pending)await callAdmin('POST',{id:row.id,action:'aprovar'});await refresh();}
+   draw();setInfo(`${pending.length} publicação(ões) aprovada(s).`);
+  }catch(e){setInfo(e.message,true);}
  }
  function giftFilter(){
   let list=data.gifts||[];const period=$('#finance-period')?.value||'all';const status=$('#finance-status')?.value||'all';
@@ -284,7 +373,7 @@
   const missing=approved.filter(g=>g.liquido_mp===null||g.liquido_mp===undefined).length;
   $('#fin-net').title=missing?`Líquido indisponível para ${missing} contribuição(ões)`:'Valores líquidos informados pelo Mercado Pago';
   const labels={aprovado:'Aprovado',iniciado:'Iniciado',pendente:'Pendente',cancelado:'Cancelado',contestado:'Contestado',estornado:'Estornado'};
-  $('#gifts-tbody').innerHTML=list.map(g=>`<tr><td><strong>${escapeHTML(g.nome||'Não informado')}</strong></td><td>${escapeHTML(g.titulo)}</td><td>${brl(g.valor)}</td><td>${g.taxa_mp===null||g.taxa_mp===undefined?'—':brl(g.taxa_mp)}</td><td>${g.liquido_mp===null||g.liquido_mp===undefined?'—':brl(g.liquido_mp)}</td><td><span class="tag ${g.status==='aprovado'?'': 'pending'}">${escapeHTML(labels[g.status]||g.status)}</span></td><td>${escapeHTML(date(g.aprovado_em||g.criado_em))}</td></tr>`).join('')||'<tr><td colspan="7">Nenhuma contribuição no filtro selecionado.</td></tr>';
+  $('#gifts-tbody').innerHTML=list.map(g=>`<tr><td><strong>${escapeHTML(g.nome||'Não informado')}</strong></td><td>${escapeHTML(g.titulo)}</td><td>${brl(g.valor)}</td><td>${g.taxa_mp===null||g.taxa_mp===undefined?'—':brl(g.taxa_mp)}</td><td>${g.liquido_mp===null||g.liquido_mp===undefined?'—':brl(g.liquido_mp)}</td><td><span class="tag ${g.status==='aprovado'?'': 'pending'}">${escapeHTML(labels[g.status]||g.status)}</span></td><td>${escapeHTML(date(g.aprovado_em||g.criado_em))}</td><td>${g.manual?`<button type="button" class="soft-btn" data-del-manual="${escapeHTML(g.id)}">Excluir</button>`:''}</td></tr>`).join('')||'<tr><td colspan="8">Nenhuma contribuição no filtro selecionado.</td></tr>';
   const grouped=new Map();for(const g of approved){const dt=new Date(g.aprovado_em||g.criado_em);if(!Number.isFinite(dt.getTime()))continue;
    const month=`${dt.getFullYear()}-${String(dt.getMonth()+1).padStart(2,'0')}`;grouped.set(month,(grouped.get(month)||0)+Number(g.valor||0));}
   const months=[...grouped.entries()].sort((a,b)=>a[0].localeCompare(b[0])).slice(-6),container=$('#finance-chart');container.replaceChildren();
@@ -357,7 +446,7 @@
  async function refresh(){
   if(demo){data=structuredClone(fake);settings=structuredClone(fake.settings);draw();showSettings();return;}
   setInfo('Carregando informações privadas...');
-  const response=await callAdmin();data={rsvp:response.rsvp||[],gifts:response.gifts||[],album:response.album||[],audit:response.audit||[],backups:response.backups||[],photosBacked:response.photosBacked||0,backupConfigured:!!response.backupConfigured,convites:data.convites||[]};settings=response.settings||settings;await loadInvites();draw();showSettings();setInfo('Dados atualizados.');
+  const response=await callAdmin();data={rsvp:response.rsvp||[],gifts:response.gifts||[],album:response.album||[],audit:response.audit||[],backups:response.backups||[],photosBacked:response.photosBacked||0,backupConfigured:!!response.backupConfigured,pagamento:response.pagamento||{},convites:data.convites||[]};settings=response.settings||settings;await loadInvites();draw();showSettings();setInfo('Dados atualizados.');
  }
  function csvCell(v){let s=String(v??'');if(/^[\s]*[=+@\-\t\r]/.test(s))s="'"+s;return '"'+s.replaceAll('"','""')+'"';}
  function downloadCSV(){
@@ -380,12 +469,16 @@
  $('#admin-invite-download')?.addEventListener('click',()=>{if(cardReady)window.WeddingInviteCard.download($('#admin-invite-card'),inviteInfo?.destinatario).catch(e=>setInfo(e.message,true));});
  $('#admin-invite-share-image')?.addEventListener('click',async()=>{if(!cardReady)return;try{const ok=await window.WeddingInviteCard.share($('#admin-invite-card'),inviteInfo?.destinatario,inviteGenerated);if(!ok){await window.WeddingInviteCard.download($('#admin-invite-card'),inviteInfo?.destinatario);setInfo('Seu navegador não compartilha arquivos: imagem baixada. Anexe-a no WhatsApp.');}}catch(e){if(e.name!=='AbortError')setInfo(e.message,true);}});
 
- $('#search-rsvp')?.addEventListener('input',drawRSVP);$('#filter-album')?.addEventListener('change',drawAlbum);
+ $('#search-rsvp')?.addEventListener('input',drawRSVP);$('#search-convites')?.addEventListener('input',drawInvites);$('#filter-album')?.addEventListener('change',drawAlbum);$('#approve-all-pending')?.addEventListener('click',approveAllPending)
  $('#refresh')?.addEventListener('click',()=>refresh().catch(e=>setInfo(e.message,true)));
  $('#export')?.addEventListener('click',downloadCSV);
  $('#settings-form')?.addEventListener('submit',saveSettings);
+$('#mp-form')?.addEventListener('submit',saveCredenciaisMP);
  $('#finance-period')?.addEventListener('change',drawGifts);$('#finance-status')?.addEventListener('change',drawGifts);
  $('#finance-export')?.addEventListener('click',exportFinance);
+$('#gifts-tbody')?.addEventListener('click',e=>{const b=e.target.closest('[data-del-manual]');if(b)deleteManualGift(b.dataset.delManual);});
+$('#manual-gift-form')?.addEventListener('submit',saveManualGift);
+$('#mp-remove')?.addEventListener('click',removeCredenciaisMP);
  $('#backup-manual')?.addEventListener('click',()=>exportPrivate().catch(e=>setInfo(e.message,true)));
  $('#logout')?.addEventListener('click',async()=>{await sdk?.auth.signOut();location.reload();});
  if(demo){view();refresh();return;}
@@ -402,4 +495,19 @@
   if(session.session)return refresh().then(view).catch(e=>{loginStatus(e.message);clientCleanup();});
  }).catch(()=>{});
  async function clientCleanup(){await sdk?.auth.signOut();}
+})();
+
+/* Contador de caracteres do Pix (limites do padrão Pix) */
+(function(){
+  function bind(id,max){
+    var input=document.getElementById(id); if(!input) return;
+    input.setAttribute('maxlength',String(max));
+    var out=document.createElement('small');
+    out.style.cssText='display:block;margin-top:4px;color:#6b5a63;font-size:12px;';
+    input.parentNode.insertBefore(out,input.nextSibling);
+    function upd(){ var n=(input.value||'').trim().length; out.textContent=n+' de '+max+' caracteres'; out.style.color=n>max?'#ae284b':'#6b5a63'; }
+    input.addEventListener('input',upd); upd();
+  }
+  bind('settings-pix-holder',25);
+  bind('settings-pix-city',15);
 })();

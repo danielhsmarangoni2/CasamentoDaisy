@@ -1,4 +1,4 @@
-import {json,db,alertWhatsApp,validMPSignature,money} from './_shared.mjs';
+import {json,db,alertWhatsApp,validMPSignature,money,credenciaisMercadoPago} from './_shared.mjs';
 export default async(request)=>{
  if(request.method!=='POST')return json({error:'Método não permitido'},405);
  try{
@@ -6,10 +6,11 @@ export default async(request)=>{
   const query=new URL(request.url).searchParams;
   const id=query.get('data.id')||query.get('data_id')||payload?.data?.id;
   const type=query.get('type')||payload?.type;
+  const cred=await credenciaisMercadoPago();
   if(type!=='payment')return json({ok:true,ignorado:true});
-  if(!/^\d{5,25}$/.test(String(id||''))||!validMPSignature(request,id))return json({error:'Assinatura inválida'},401);
+  if(!/^\d{5,25}$/.test(String(id||''))||!validMPSignature(request,id,cred.webhookSecret))return json({error:'Assinatura inválida'},401);
   const r=await fetch(`https://api.mercadopago.com/v1/payments/${encodeURIComponent(id)}`,{
-   headers:{Authorization:`Bearer ${process.env.MP_ACCESS_TOKEN}`},signal:AbortSignal.timeout(9000)});
+   headers:{Authorization:`Bearer ${cred.accessToken}`},signal:AbortSignal.timeout(9000)});
   if(!r.ok){console.error('Erro verificar pagamento',r.status);return json({error:'Não foi possível verificar pagamento'},502)}
   const payment=await r.json();
   const external=String(payment.external_reference||'');

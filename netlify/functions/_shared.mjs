@@ -1,4 +1,4 @@
-import { createHmac, timingSafeEqual } from 'node:crypto';
+import { createHash, createHmac, timingSafeEqual, createCipheriv, createDecipheriv, randomBytes } from 'node:crypto';
 
 export const cors = {'Content-Type':'application/json; charset=utf-8','Cache-Control':'no-store','X-Content-Type-Options':'nosniff'};
 export const json = (obj,status=200)=> new Response(JSON.stringify(obj),{status,headers:cors});
@@ -17,6 +17,13 @@ export async function db(path,options={}){
  const raw=await response.text();
  if(!response.ok){console.error('Erro Supabase',response.status,raw.slice(0,300));throw new Error('Falha ao acessar armazenamento');}
  return raw ? JSON.parse(raw):null;
+}
+// Limite de tentativas por IP (IP guardado apenas como hash). Se o banco falhar, libera para não travar os convidados.
+export async function limitarTentativa(escopo,request,max,janelaSeg){
+ const ip=request.headers.get('x-nf-client-connection-ip')||request.headers.get('x-forwarded-for')?.split(',')[0]?.trim()||'desconhecido';
+ const chave=escopo+':'+createHash('sha256').update(ip).digest('hex').slice(0,32);
+ try{return await db('rpc/registrar_tentativa_casamento',{method:'POST',body:{p_chave:chave,p_max:max,p_janela_seg:janelaSeg}})===true;}
+ catch(e){console.warn('Limite de tentativas indisponível:',e.message);return true;}
 }
 export async function alertWhatsApp(tipo,detalhes){
  const required=missing('META_WA_ACCESS_TOKEN','META_WA_PHONE_NUMBER_ID','META_WA_TEMPLATE');
@@ -55,8 +62,8 @@ export async function captchaValid(token,request){
  return r.ok && (await r.json()).success===true;
 }
 // Validação da assinatura do Mercado Pago (a requisição também é conferida na API oficial).
-export function validMPSignature(req,paymentId){
- const secret=process.env.MP_WEBHOOK_SECRET;
+export function validMPSignature(req,paymentId,secretOverride){
+ const secret=secretOverride??process.env.MP_WEBHOOK_SECRET;
  const header=req.headers.get('x-signature')||'';
  const reqId=req.headers.get('x-request-id')||'';
  if(!secret || !header || !reqId || !paymentId)return false;
@@ -66,4 +73,34 @@ export function validMPSignature(req,paymentId){
  const actual=createHmac('sha256',secret).update(msg).digest();
  const received=Buffer.from(pairs.v1,'hex');
  return actual.length===received.length&&timingSafeEqual(actual,received);
+}
+
+// Credenciais do Mercado Pago: valor gravado pelo painel (criptografado) tem prioridade; variáveis do Netlify são reserva.
+const segredoKey=()=>{const k=Buffer.from(process.env.SEGREDOS_ENCRYPTION_KEY||'','base64');return k.length===32?k:null;};
+export const chaveSegredosConfigurada=()=>!!segredoKey();
+export function cifrarSegredo(texto){
+ const key=segredoKey();if(!key)throw new Error('SEGREDOS_ENCRYPTION_KEY ausente ou inválida');
+ const iv=randomBytes(12);const cipher=createCipheriv('aes-256-gcm',key,iv);
+ const enc=Buffer.concat([cipher.update(String(texto),'utf8'),cipher.final()]);
+ return Buffer.concat([iv,cipher.getAuthTag(),enc]).toString('base64');
+}
+export function decifrarSegredo(valor){
+ if(!valor)return '';
+ const key=segredoKey();if(!key)throw new Error('SEGREDOS_ENCRYPTION_KEY ausente ou inválida');
+ const raw=Buffer.from(valor,'base64');
+ const decipher=createDecipheriv('aes-256-gcm',key,raw.subarray(0,12));
+ decipher.setAuthTag(raw.subarray(12,28));
+ return Buffer.concat([decipher.update(raw.subarray(28)),decipher.final()]).toString('utf8');
+}
+export async function credenciaisMercadoPago(){
+ let r={};
+ try{ r=(await db('segredos_pagamento_casamento?id=eq.1&select=mp_access_token_cifrado,mp_webhook_secret_cifrado&limit=1'))?.[0]||{}; }
+ catch(e){ console.error('Credenciais MP (banco)',e.message); }
+ if(r.mp_access_token_cifrado){
+  try{
+   return {accessToken:decifrarSegredo(r.mp_access_token_cifrado),
+     webhookSecret:decifrarSegredo(r.mp_webhook_secret_cifrado)||process.env.MP_WEBHOOK_SECRET||'',origem:'painel'};
+  }catch(e){ console.error('Credenciais MP (decifrar)',e.message); }
+ }
+ return {accessToken:process.env.MP_ACCESS_TOKEN||'',webhookSecret:process.env.MP_WEBHOOK_SECRET||'',origem:process.env.MP_ACCESS_TOKEN?'netlify':'nenhuma'};
 }

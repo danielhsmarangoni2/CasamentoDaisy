@@ -8,7 +8,6 @@
   let db = null;
   let posts = [];
   let activeFilter = 'todos';
-  let photoObjectUrl = null;
   let submitting = false;
   let toastTimer;
 
@@ -29,7 +28,7 @@
   const second = (cfg.noivos?.segundo || 'Vinícius').trim();
   $('#nome-primeiro').textContent = first;
   $('#nome-segundo').textContent = second;
-  $('#monograma').innerHTML = '<img class="seal-logo" src="assets/orquideas-dv.png" alt="D&amp;V" width="506" height="399" />';
+  $('#monograma').innerHTML = '<img class="seal-logo" src="assets/orquideas-dv.webp" alt="D&amp;V" width="506" height="399" />';
   if ($('.footer-monogram') && !$('.footer-monogram').querySelector('img')) $('.footer-monogram').innerHTML = `${esc(first[0])} <i>&amp;</i> ${esc(second[0])}`; // Mantém a logo oficial no rodapé
   $('title').textContent = `${first} & ${second} | Casamento`;
   $('#guest-message').placeholder = `Escreva algo especial para ${first} e ${second}...`;
@@ -186,7 +185,7 @@
     const name=normalizePixText(pixSettings.pixTitular);
     const city=normalizePixText(pixSettings.pixCidade);
     const merchant=pixField('00','br.gov.bcb.pix')+pixField('01',key);
-    const info=pixField('05','***');
+    const info=pixField('05','Presente Daisy e Vinicius');
     const payload= pixField('00','01')+pixField('26',merchant)+pixField('52','0000')+
       pixField('53','986')+pixField('54',amount.toFixed(2))+pixField('58','BR')+
       pixField('59',name)+pixField('60',city)+pixField('62',info)+'6304';
@@ -335,6 +334,11 @@
     currentInvite=i;
     inviteEntry.querySelector('strong').textContent='Convite de '+(i.nomePrincipal?(i.nomePrincipal+( /\be fam[ií]lia$/i.test(i.nomePrincipal)?'':' e família')):i.familia);
     inviteStatus.textContent='Convidados incluídos: '+i.pessoas.length+' · '+i.maxAdultos+' adulto(s) · '+i.maxCriancas+' criança(s). Selecione quem vai comparecer.';
+    if(cfg.prazoConfirmacao && /^\d{4}-\d{2}-\d{2}$/.test(cfg.prazoConfirmacao)){
+      const [ano,mes,dia]=cfg.prazoConfirmacao.split('-').map(Number);
+      const dias=Math.ceil((Date.UTC(ano,mes-1,dia)-Date.now())/86400000);
+      inviteStatus.textContent+=dias>=0?` Confirme até ${String(dia).padStart(2,'0')}/${String(mes).padStart(2,'0')}/${ano} (faltam ${dias} dia(s)).`:' O prazo de confirmação já terminou. Fale com os noivos.';
+    }
     $('#rsvp-name').value=i.pessoas.find(p=>p.tipo==='adulto')?.nome||i.pessoas[0].nome;
     $('#rsvp-name').readOnly=true;
     $('#rsvp-name').closest('.rsvp-field').hidden=true;
@@ -360,8 +364,9 @@
   }
   async function openInvite(token){
     visibleInviteForm(false);
-    if(!/^[A-Za-z0-9_-]{32}$/.test(token)&&!(inviteDemo()&&token==='demonstracao')){
-      inviteStatus.textContent='Código inválido. Confira o link enviado pelos noivos.';return;
+    if(!/^([A-Za-z0-9_-]{32}|[abcdefghjkmnpqrstuvwxyz23456789]{12})$/.test(token)&&!(inviteDemo()&&token==='demonstracao')){
+      inviteStatus.textContent='Código inválido. Confira o link enviado pelos noivos ou copie o código inteiro.';
+      limparCodigoDaUrl();return;
     }
     inviteStatus.textContent='Consultando seu convite...';
     if(inviteDemo()){
@@ -372,12 +377,28 @@
     }
     try{
      const res=await fetch('/.netlify/functions/invite?token='+encodeURIComponent(token),{cache:'no-store'});
-     const info=await res.json();if(!res.ok)throw Error(info.error||'Convite não encontrado.');
+     let info={};try{info=await res.json();}catch{}
+     if(!res.ok)throw Error(info.error||(res.status===404?'Convite inválido ou cancelado.':'Não foi possível consultar seu convite agora. Tente de novo em instantes.'));
      renderInvite(info);
-    }catch(e){inviteStatus.textContent=e.message||'Não foi possível consultar seu convite.';}
+    }catch(e){
+      inviteStatus.textContent=(e.message||'Não foi possível consultar seu convite.')+' Confira o código ou peça um novo link aos noivos.';
+      limparCodigoDaUrl();
+    }
+  }
+  function limparCodigoDaUrl(){
+    // Remove o código inválido da URL para que um recarregamento não repita o erro.
+    try{history.replaceState(null,'',location.pathname);}catch{}
+    $('#invite-code').focus();
   }
   $('#invite-open').addEventListener('click',()=>{
-    const code=$('#invite-code').value.trim();const url=new URL(location.href);url.searchParams.set('convite',code);
+    let code=$('#invite-code').value.trim();
+    if(/^[A-Za-z0-9]{12}$/.test(code))code=code.toLowerCase(); // códigos novos são minúsculos
+    if(!code){inviteStatus.textContent='Digite o código do convite antes de abrir.';$('#invite-code').focus();return;}
+    if(!/^([A-Za-z0-9_-]{32}|[abcdefghjkmnpqrstuvwxyz23456789]{12})$/.test(code)&&!(inviteDemo()&&code==='demonstracao')){
+      inviteStatus.textContent='Código inválido. Confira se digitou o código inteiro. Confira o link enviado pelos noivos ou copie o código inteiro.';
+      $('#invite-code').focus();return;
+    }
+    const url=new URL(location.href);url.searchParams.set('convite',code);
     location.href=url.pathname+url.search+url.hash;
   });
   if(cfg.convitesAtivos){
@@ -407,7 +428,9 @@
         body:JSON.stringify({token:inviteQuery,resposta:response,ids:selected,contato:contact,
           website:$('#rsvp-company').value,captchaToken:window.WeddingAntiBot?.token('rsvp')||''})
       });const result=await res.json();if(!res.ok||!result.salvo)throw Error(result.error||'Não foi possível salvar.');
-      setStatus('#rsvp-status',result.alterado?'Sua confirmação foi registrada. Obrigado! 💗':'Sua confirmação já estava registrada. 💗',true);
+      const nomesConfirmados=currentInvite.pessoas.filter(pessoa=>selected.includes(pessoa.id)).map(pessoa=>pessoa.nome);
+      const resumo=response==='sim'?`Confirmado: ${nomesConfirmados.join(', ')}. Vamos celebrar com vocês! 💗`:'Registramos que sua família não poderá comparecer. Obrigado por avisar! 💗';
+      setStatus('#rsvp-status',result.alterado?resumo:'Sua confirmação já estava registrada. 💗',true);
       toast('Confirmação registrada!');
     }catch(error){setStatus('#rsvp-status',error.message||'Erro ao salvar.');}
     finally{rsvpSubmitting=false;rsvpButton.disabled=false;rsvpButton.innerHTML=rsvpInitialButton;window.WeddingAntiBot?.reset('rsvp');}
@@ -503,61 +526,7 @@
     }
   });
 
-  const photoInput = $('#guest-photo');
-  const preview = $('#photo-preview');
-  function clearPreview() {
-    if (photoObjectUrl) URL.revokeObjectURL(photoObjectUrl);
-    photoObjectUrl = null;
-    photoInput.value = '';
-    preview.classList.add('hidden');
-    $('#preview-image').removeAttribute('src');
-    $('#file-label').innerHTML = '<b>Clique para escolher uma foto</b><small>JPG, PNG ou imagem do celular • até 15 MB antes da otimização</small>';
-  }
-  photoInput.addEventListener('change', () => {
-    if (photoObjectUrl) URL.revokeObjectURL(photoObjectUrl);
-    const file=photoInput.files?.[0];
-    if (!file) {clearPreview();return;}
-    if (!file.type.startsWith('image/') || file.size > 15*1024*1024) {
-      clearPreview();toast('Escolha uma imagem com até 15 MB.');return;
-    }
-    photoObjectUrl = URL.createObjectURL(file);
-    $('#preview-image').src = photoObjectUrl;
-    preview.classList.remove('hidden');
-    $('#file-label').textContent = file.name;
-  });
-  $('#remove-photo').addEventListener('click', clearPreview);
   $('#guest-message').addEventListener('input', () => $('#letter-count').textContent = $('#guest-message').value.length);
-
-  async function optimizePhoto(file) {
-    // Converte imagens de celulares para JPEG, remove metadados e reduz consumo de armazenamento.
-    const url = URL.createObjectURL(file);
-    try {
-      const img = new Image();
-      img.decoding = 'async';
-      img.src = url;
-      await img.decode();
-      const bound = 1600;
-      const scale = Math.min(1,bound/Math.max(img.naturalWidth,img.naturalHeight));
-      const canvas = document.createElement('canvas');
-      canvas.width = Math.max(1,Math.round(img.naturalWidth*scale));
-      canvas.height = Math.max(1,Math.round(img.naturalHeight*scale));
-      const ctx=canvas.getContext('2d');
-      ctx.fillStyle = '#ffffff';ctx.fillRect(0,0,canvas.width,canvas.height);
-      ctx.drawImage(img,0,0,canvas.width,canvas.height);
-      let quality=.78;
-      let blob=null;
-      for (let n=0;n<3;n++) {
-        blob=await new Promise(resolve=>canvas.toBlob(resolve,'image/jpeg',quality));
-        if (!blob) throw new Error('Não foi possível preparar esta imagem.');
-        if (blob.size <= 4*1024*1024) break;
-        quality-=.15;
-      }
-      if (blob.size > 4*1024*1024) throw new Error('A imagem ficou grande demais. Escolha outra foto.');
-      return blob;
-    } catch(error) {
-      throw new Error('Não conseguimos processar esta foto. Tente enviar uma imagem JPG ou PNG.');
-    } finally { URL.revokeObjectURL(url); }
-  }
 
   function photoUrl(post) {
     // URL temporária gerada no servidor APENAS depois da aprovação.
@@ -636,29 +605,19 @@
     if(submitting)return;
     const name=$('#guest-name').value.trim();
     const message=$('#guest-message').value.trim();
-    const file=photoInput.files?.[0];
     if(name.length<2 || name.length>70)return setStatus('#mural-form-status','Escreva seu nome (de 2 a 70 caracteres).');
-    if(!message && !file)return setStatus('#mural-form-status','Escreva uma mensagem ou selecione uma foto.');
+    if(!message)return setStatus('#mural-form-status','Escreva uma mensagem para os noivos.');
     if(!$('#guest-consent').checked)return setStatus('#mural-form-status','Marque a autorização de publicação antes de continuar.');
     if($('#guest-site').value) return;
     if(!db)return setStatus('#mural-form-status','O mural ainda não está conectado. Os noivos precisam seguir o guia de configuração.');
-    if(file && (!file.type.startsWith('image/')||file.size>15*1024*1024))return setStatus('#mural-form-status','Envie apenas uma imagem de até 15 MB.');
     submitting=true;$('#submit-post').disabled=true;$('#submit-post').textContent='Enviando lembrança...';
     try{
-      let foto_path=null;
-      if(file){
-        const blob=await optimizePhoto(file);
-        if(!cfg.turnstileSiteKey || !window.WeddingAntiBot?.token('mural')) throw new Error('Conclua a verificação anti-robô para enviar uma foto.');
-        const response=await fetch('/.netlify/functions/gallery-upload-token',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({captchaToken:window.WeddingAntiBot.token('mural')})});
-        const signed=await response.json();
-        if(!response.ok||!signed.path||!signed.token)throw new Error(signed.error||'Não foi possível iniciar o envio.');
-        const {error:uploadError}=await db.storage.from('casamento-fotos').uploadToSignedUrl(signed.path,signed.token,blob,{contentType:'image/jpeg',cacheControl:'300'});
-        if(uploadError)throw new Error('Não foi possível enviar a foto: '+uploadError.message);
-        foto_path=signed.path;
-      }
-      const {error}=await db.from('mural_de_recados').insert({nome:name,mensagem:message,foto_path,aprovado:false});
-      if(error)throw new Error('Erro ao salvar a lembrança: '+error.message);
-      $('#mural-form').reset();clearPreview();$('#letter-count').textContent='0';
+      const captchaToken=cfg.turnstileSiteKey?(window.WeddingAntiBot?.token('mural')||''):'';
+      if(cfg.turnstileSiteKey&&!captchaToken)throw new Error('Conclua a verificação anti-robô antes de enviar.');
+      const response=await fetch('/.netlify/functions/mural-message',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({nome:name,mensagem:message,captchaToken,website:$('#guest-site').value})});
+      const data=await response.json().catch(()=>({}));
+      if(!response.ok)throw new Error(data.error||'Não foi possível enviar sua lembrança.');
+      $('#mural-form').reset();$('#letter-count').textContent='0';
       setStatus('#mural-form-status','Sua lembrança foi recebida! Ela aparecerá após os noivos aprovarem. 💗',true);
       toast('Lembrança enviada com sucesso!');
       window.WeddingAntiBot?.reset('mural');

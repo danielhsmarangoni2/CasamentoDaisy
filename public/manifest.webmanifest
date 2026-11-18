@@ -1,0 +1,23 @@
+{
+  "name": "Daisy e Vinícius | Casamento",
+  "short_name": "Daisy e Vinícius",
+  "description": "Convite, confirmação de presença e mural do casamento de Daisy e Vinícius.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#fff5f8",
+  "theme_color": "#86144f",
+  "lang": "pt-BR",
+  "icons": [
+    {
+      "src": "assets/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
