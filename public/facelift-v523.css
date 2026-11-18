@@ -129,3 +129,6 @@ html.texto-grande{zoom:1.12}
 .faq-list summary::after{content:'+';float:right;font-weight:400;color:#86144f}
 .faq-list details[open] summary::after{content:'–'}
 .faq-list details p{margin:10px 0 2px;line-height:1.55}
+
+/* Filtros do mural: área de toque mínima de 44px */
+.wall-filters .filter{min-height:44px;padding-inline:16px}

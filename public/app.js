@@ -545,7 +545,7 @@
       const box=document.createElement('div');box.className='empty-wall';
       const symbol=document.createElement('span');symbol.className='empty-icon';symbol.innerHTML='<svg class="ico ico-spark" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-spark"/></svg>';
       const heading=document.createElement('h4');heading.textContent=posts.length?'Sem publicações nesta categoria.':'As primeiras lembranças começam aqui.';
-      const msg=document.createElement('p');msg.textContent=posts.length?'Escolha outro filtro para ver as lembranças.':'Deixe uma foto ou recado para os noivos. Eles serão exibidos após aprovação.';
+      const msg=document.createElement('p');msg.textContent=posts.length?'Escolha outro filtro para ver as lembranças.':'Deixe uma mensagem para os noivos. Ela aparecerá aqui após a aprovação.';
       box.append(symbol,heading,msg);wrap.append(box);return;
     }
     for (const post of selection) {
@@ -597,7 +597,7 @@
       await loadWall();
     } catch(error) {
       console.error(error);
-      $('#mural-info').textContent='Erro na conexão. Confira sua internet e as chaves do Supabase.';
+      $('#mural-info').textContent='Não foi possível carregar os recados agora. Tente novamente em instantes.';
     }
   }
   $('#mural-form').addEventListener('submit',async e=>{
