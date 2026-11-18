@@ -13,7 +13,7 @@ window.WEDDING_CONFIG = {
   convitesAtivos: true,    // RSVP somente por link personalizado e seguro, requer migração V4.
   notificacoesAtivas: false, // Troque para true DEPOIS de configurar Netlify Functions, Supabase, Mercado Pago e Meta.
   turnstileSiteKey: '0x4AAAAAAF7-aUPR_w5D5FQq', // Chave pública do Cloudflare Turnstile (widget 'Casamento Daisy - fotos').
-  prazoConfirmacao: '', // Data limite para confirmar presença, AAAA-MM-DD. Vazio = não mostra o prazo.
+  prazoConfirmacao: '2027-05-03', // Data limite para confirmar presença, AAAA-MM-DD. Vazio = não mostra o prazo.
   whatsapp: '',            // So numeros com DDI e DDD. Exemplo: '5511999999999'
   // Pix agora é gerenciado exclusivamente no painel /admin.html.
   // Cole aqui os enderecos REAIS dos links criados na sua conta Mercado Pago.
